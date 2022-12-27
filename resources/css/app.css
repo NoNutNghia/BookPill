@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('auth.css');
+@import url('common.css');
+@import url('header.css');
+@import url('main.css');
