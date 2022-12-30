@@ -29,7 +29,7 @@
             <span class="text-link mr-[0.4rem]">
                 New to BookPill?
             </span>
-            <a href="">
+            <a href="{{ route('register') }}">
                 <span class="text-link-switch">
                     Register
                 </span>

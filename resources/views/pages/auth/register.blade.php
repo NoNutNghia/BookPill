@@ -36,7 +36,7 @@
             <span class="text-link mr-[0.4rem]">
                 Have an account?
             </span>
-                <a href="">
+                <a href="{{ route('sign_in') }}">
                 <span class="text-link-switch">
                     Sign In
                 </span>

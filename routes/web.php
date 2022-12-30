@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 Route::get('/register', function () {
     return view('pages.auth.register');
-});
+})->name('register');
+
+Route::get('/sign-in', function () {
+    return view('pages.auth.sign_in');
+})->name('sign_in');

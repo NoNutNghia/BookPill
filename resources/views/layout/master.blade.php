@@ -16,7 +16,7 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <main>
+    <main class="flex flex-col">
         @include('partial.header')
         <div class="content">
             @yield('content')

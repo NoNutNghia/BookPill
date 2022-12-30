@@ -27,13 +27,13 @@
             </a>
         </div>
         <div class="flex flex-row items-center gap-[0.5rem]">
-            <a href="" class="text-link-switch text-gray-50">
+            <a href="{{ route('sign_in') }}" class="text-link-switch text-gray-50">
                 <span>
                     Sign In
                 </span>
             </a>
             <div class="hr-vertical"></div>
-            <a href="" class="text-link-switch text-gray-50">
+            <a href="{{ route('register') }}" class="text-link-switch text-gray-50">
                 <span>
                     Register
                 </span>
@@ -54,8 +54,54 @@
             </div>
             <div class="w-1/5 flex flex-col justify-end items-center">
                 <i class="fa-sharp fa-solid fa-cart-shopping" id="cart_user"></i>
-                <div id="cart_detail">
-
+                <div class="flex flex-row-reverse absolute" style="width: 400px ; right: calc(8%); bottom: 8px">
+                    <div class="cart cart_expand"></div>
+                </div>
+                <div id="cart_detail" class="cart">
+                    <div class="flex flex-col">
+                        <span class="text_card">
+                            Recently Added Products
+                        </span>
+                        <div class="flex flex-row justify-between cart_item">
+                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
+                            <span class="w-[67%] text-[14px] font-bold">
+                                Test Test Test Test Test Test
+                            </span>
+                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
+                                ₫110000
+                            </span>
+                        </div>
+                        <div class="flex flex-row justify-between cart_item">
+                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
+                            <span class="w-[67%] text-[14px] font-bold">
+                                Test Test Test Test Test Test
+                            </span>
+                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
+                                ₫110000
+                            </span>
+                        </div>
+                        <div class="flex flex-row justify-between cart_item">
+                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
+                            <span class="w-[67%] text-[14px] font-bold">
+                                Test Test Test Test Test Test
+                            </span>
+                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
+                                ₫110000
+                            </span>
+                        </div>
+                        <div class="flex flex-row justify-between cart_item">
+                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
+                            <span class="w-[67%] text-[14px] font-bold">
+                                Test Test Test Test Test Test
+                            </span>
+                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
+                                ₫110000
+                            </span>
+                        </div>
+{{--                        <div class="flex flex-row items-center justify-center">--}}
+{{--                            <img width=60%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">--}}
+{{--                        </div>--}}
+                    </div>
                 </div>
             </div>
         </div>

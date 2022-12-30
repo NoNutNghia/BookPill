@@ -1,3 +1,84 @@
 .content {
-    height: 100vh;
+    min-height: 100vh;
+    margin-top: 120px;
+    padding: 24px 16px;
+    background-color: #f5f5f5;
+}
+
+.text_filter {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.filter {
+    width: 190px;
+    margin-right: 1.25rem;
+}
+
+.label_filter {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.check_box_filter {
+    margin-right: 6px;
+}
+
+.input_price_filter {
+    width: 5rem;
+    border: 1px solid rgba(0,0,0,.26);
+    border-radius: 0.125rem;
+    height: 1.875rem;
+    padding-left: 0.3125rem;
+    font-size: .75rem;
+}
+
+.hr_vertical_price {
+    width: 12px;
+    height: 1px;
+    background-color: rgba(0,0,0,.26);
+}
+
+.fa-star {
+    color: #feb720;
+}
+
+.active {
+    border-radius: 0.78125rem;
+    background-color: #ebebeb;
+}
+
+.rating:hover {
+    cursor: pointer;
+    background-color: #ebebeb;
+    border-radius: 0.78125rem;
+}
+
+.active span {
+    font-weight: 500;
+}
+
+.rating_not_have_text {
+    width: calc(100% - 32.5px);
+}
+
+.product {
+    border-radius: 0.125rem;
+    height: 388px;
+    box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 10%);
+    background-color: white;
+}
+
+.product:hover {
+    cursor: pointer;
+    border: #566FEF 1px solid;
+}
+
+.product_area {
+    width: calc(100% - 190px);
+}
+
+.product_list_search {
+    width: 100%;
+    padding: 0 8px;
 }

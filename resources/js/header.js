@@ -1,5 +1,6 @@
 const modal_download = $('#modal_download')
 const cart_user = $('#cart_user')
+const cart = $('.cart')
 
 $('#text_header_download').hover(
     function () {
@@ -20,4 +21,21 @@ $('#text_header_download').hover(
     }
 )
 
-
+cart_user.hover(
+    function () {
+        if (cart.css('display') === 'none') {
+            cart.css('display', 'block')
+            cart.hover(
+                function () {
+                    cart.css('display', 'block')
+                },
+                function () {
+                    cart.css('display', 'none')
+                }
+            )
+        }
+    },
+    function () {
+        cart.css('display', 'none')
+    }
+)
