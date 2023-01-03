@@ -38,11 +38,35 @@
                     Register
                 </span>
             </a>
+            <div class="flex flex-row items-center gap-[0.5rem]" id="profile">
+                <a class="text-link-switch text-gray-50" href="{{ route('account.profile') }}">
+                    <span>
+                        Test username
+                    </span>
+                </a>
+            </div>
+            <div class="flex flex-row items-center justify-center absolute" style="width: 116px; right: 40px; top: 30px">
+                <div class="profile_expand profile"></div>
+            </div>
+            <div class="profile_menu profile">
+                <div class="flex flex-col">
+                    <a href="{{ route('account.profile') }}">
+                        <span>
+                            My Account
+                        </span>
+                    </a>
+                    <a href="">
+                        <span>
+                            Logout
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="flex flex-row items-center justify-between">
-        <a href="" class="w-[17%]">
+        <a href="{{ route('main') }}" class="w-[17%]">
             <img class="image_header" src="{{ asset('storage/source_image/main_logo.png') }}" alt="">
         </a>
         <div class="flex flex-row w-4/5">

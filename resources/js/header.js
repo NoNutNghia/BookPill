@@ -1,6 +1,8 @@
 const modal_download = $('#modal_download')
 const cart_user = $('#cart_user')
 const cart = $('.cart')
+const profile = $('#profile')
+const profile_expand = $('.profile')
 
 $('#text_header_download').hover(
     function () {
@@ -39,3 +41,22 @@ cart_user.hover(
         cart.css('display', 'none')
     }
 )
+
+profile.hover(
+    function () {
+        if(profile_expand.css('display') === 'none') {
+            profile_expand.css('display', 'block')
+
+            profile_expand.hover(
+                function () {
+                    profile_expand.css('display', 'block')
+                },
+                function () {
+                    profile_expand.css('display', 'none')
+                }
+            )
+        }
+    },
+    function () {
+        profile_expand.css('display', 'none')
+    })

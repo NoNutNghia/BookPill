@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.product.main');
-});
+})->name('main');
 
 Route::get('/register', function () {
     return view('pages.auth.register');
@@ -24,3 +24,13 @@ Route::get('/register', function () {
 Route::get('/sign-in', function () {
     return view('pages.auth.sign_in');
 })->name('sign_in');
+
+Route::prefix('/account')->name('account.')->group(function () {
+    Route::get('profile', function () {
+        return view('pages.profile.profile');
+    })->name('profile');
+});
+
+Route::get('/product/detail', function () {
+    return view('pages.product.detail');
+})->name('detail');

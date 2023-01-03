@@ -82,3 +82,8 @@ input {
     height: 16px;
     background-color: rgba(0, 0, 0, 0.2);
 }
+
+.image_user {
+    border-radius: 50%;
+    border: rgba(107, 114, 128, 0.09) solid 1px;
+}

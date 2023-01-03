@@ -64,7 +64,8 @@
 
 .product {
     border-radius: 0.125rem;
-    height: 388px;
+    min-height: 336px;
+    height: auto;
     box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 10%);
     background-color: white;
 }
@@ -82,3 +83,38 @@
     width: 100%;
     padding: 0 8px;
 }
+
+.product img {
+    border-bottom: rgba(86, 111, 239, 0.53) 1px solid;
+    margin-bottom: 0.5rem;
+}
+
+.title_product {
+    font-size: 0.75rem;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.price_old {
+    color: rgb(156 163 175);
+    text-decoration-line: line-through;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: 8px;
+}
+
+.price_product {
+    color: #566FEF;
+    font-size: 18px;
+}
+
+.price_old::before,
+.price_product::before{
+    content: "₫";
+}
+
