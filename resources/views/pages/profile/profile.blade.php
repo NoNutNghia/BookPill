@@ -93,16 +93,16 @@
                         </span>
                     </div>
                     <div class="flex flex-row gap-[1rem] items-center">
-                        <div class="flex flex-row items-center gap-[4px]">
-                            <input type="radio" class="bg-[#566FEF]" id="male">
+                        <div class="form-check form-check-inline flex flex-row items-center gap-[4px]">
+                            <input type="radio" name="gender" checked class="bg-[#566FEF]" id="male">
                             <label for="male">Male</label>
                         </div>
-                        <div class="flex flex-row items-center gap-[4px]">
-                            <input type="radio" id="female">
+                        <div class="form-check form-check-inline flex flex-row items-center gap-[4px]">
+                            <input type="radio" name="gender" id="female">
                             <label for="female">Female</label>
                         </div>
                         <div class="flex flex-row items-center gap-[4px]">
-                            <input type="radio" id="other">
+                            <input type="radio" name="gender" id="other">
                             <label for="other">Other</label>
                         </div>
                     </div>

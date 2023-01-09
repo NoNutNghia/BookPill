@@ -3,13 +3,14 @@
 @section('content')
 <div class="flex flex-row items-center">
     <img class="image_large" src="{{ asset('storage/source_image/large_bookpill.png') }}" alt="">
-    <div class="flex flex-col auth_area">
+    <form action="{{ route('request_sign_in') }}" method="POST" class="flex flex-col auth_area">
+        @csrf
         <span class="auth-header-text mb-[3rem]">
             Sign in
         </span>
-        <input type="text" class="input_auth_username" placeholder="Email">
+        <input type="text" class="input_auth_username" name="email" placeholder="Email">
         <div class="flex flex-row items-center w-full mb-[2rem]">
-            <input type="text" class="w-full input_auth_password" placeholder="Password">
+            <input type="text" class="w-full input_auth_password" name="password" placeholder="Password">
             <i class="fa-regular fa-eye icon-eye"></i>
         </div>
         <button class="button-action mb-[0.5rem]">
@@ -35,7 +36,6 @@
                 </span>
             </a>
         </div>
-
-    </div>
+    </form>
 </div>
 @endsection

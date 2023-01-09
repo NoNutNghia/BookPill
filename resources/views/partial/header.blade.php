@@ -27,6 +27,7 @@
             </a>
         </div>
         <div class="flex flex-row items-center gap-[0.5rem]">
+            @if(!\Illuminate\Support\Facades\Auth::check())
             <a href="{{ route('sign_in') }}" class="text-link-switch text-gray-50">
                 <span>
                     Sign In
@@ -38,6 +39,7 @@
                     Register
                 </span>
             </a>
+            @else
             <div class="flex flex-row items-center gap-[0.5rem]" id="profile">
                 <a class="text-link-switch text-gray-50" href="{{ route('account.profile') }}">
                     <span>
@@ -55,13 +57,14 @@
                             My Account
                         </span>
                     </a>
-                    <a href="">
+                    <a href="{{ route('logout') }}">
                         <span>
                             Logout
                         </span>
                     </a>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 

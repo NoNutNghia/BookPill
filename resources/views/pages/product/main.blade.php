@@ -137,7 +137,7 @@
                 </span>
             </div>
             <div class="product_list_search grid grid-cols-5 gap-[8px]">
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
                     <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
                         <span class="title_product text-[0.85rem]">
@@ -167,97 +167,7 @@
                         </span>
                     </div>
                 </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
-                    <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
-                    <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
-                        <span class="title_product text-[0.85rem]">
-                            Test product Test product Test product Test product Test product Test product
-                        </span>
-                        <div class="flex flex-row items-center">
-                            <span class="price_old">
-                                110000
-                            </span>
-                            <span class="price_product">120000</span>
-                        </div>
-                        <div class="flex flex-row items-center gap-[12px]">
-                            <div class="flex flex-row">
-                                @foreach(range(1,5) as $j)
-                                    <span class="fa-stack" style="width:0.7em">
-                                        <i class="fas text-[10px] fa-star fa-stack-1x"></i>
-                                    </span>
-                                @endforeach
-                            </div>
-                            <div class="flex flex-row text-[0.85rem] gap-[2px]">
-                                <span>0</span>
-                                <span>sold</span>
-                            </div>
-                        </div>
-                        <span class="text-[0.85rem]">
-                            Ha Noi
-                        </span>
-                    </div>
-                </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
-                    <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
-                    <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
-                        <span class="title_product text-[0.85rem]">
-                            Test product Test product Test product Test product Test product Test product
-                        </span>
-                        <div class="flex flex-row items-center">
-                            <span class="price_old">
-                                110000
-                            </span>
-                            <span class="price_product">120000</span>
-                        </div>
-                        <div class="flex flex-row items-center gap-[12px]">
-                            <div class="flex flex-row">
-                                @foreach(range(1,5) as $j)
-                                    <span class="fa-stack" style="width:0.7em">
-                                        <i class="fas text-[10px] fa-star fa-stack-1x"></i>
-                                    </span>
-                                @endforeach
-                            </div>
-                            <div class="flex flex-row text-[0.85rem] gap-[2px]">
-                                <span>0</span>
-                                <span>sold</span>
-                            </div>
-                        </div>
-                        <span class="text-[0.85rem]">
-                            Ha Noi
-                        </span>
-                    </div>
-                </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
-                    <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
-                    <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
-                        <span class="title_product text-[0.85rem]">
-                            Test product Test product Test product Test product Test product Test product
-                        </span>
-                        <div class="flex flex-row items-center">
-                            <span class="price_old">
-                                110000
-                            </span>
-                            <span class="price_product">120000</span>
-                        </div>
-                        <div class="flex flex-row items-center gap-[12px]">
-                            <div class="flex flex-row">
-                                @foreach(range(1,5) as $j)
-                                    <span class="fa-stack" style="width:0.7em">
-                                        <i class="fas text-[10px] fa-star fa-stack-1x"></i>
-                                    </span>
-                                @endforeach
-                            </div>
-                            <div class="flex flex-row text-[0.85rem] gap-[2px]">
-                                <span>0</span>
-                                <span>sold</span>
-                            </div>
-                        </div>
-                        <span class="text-[0.85rem]">
-                            Ha Noi
-                        </span>
-                    </div>
-                </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
                     <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
                         <span class="title_product text-[0.85rem]">
@@ -347,7 +257,7 @@
                         </span>
                     </div>
                 </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
                     <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
                         <span class="title_product text-[0.85rem]">
@@ -377,7 +287,7 @@
                         </span>
                     </div>
                 </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
                     <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
                         <span class="title_product text-[0.85rem]">
@@ -407,7 +317,7 @@
                         </span>
                     </div>
                 </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
                     <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
                         <span class="title_product text-[0.85rem]">
@@ -437,7 +347,7 @@
                         </span>
                     </div>
                 </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
                     <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
                         <span class="title_product text-[0.85rem]">
@@ -467,7 +377,97 @@
                         </span>
                     </div>
                 </a>
-                <a href="{{ asset('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                    <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
+                    <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
+                        <span class="title_product text-[0.85rem]">
+                            Test product Test product Test product Test product Test product Test product
+                        </span>
+                        <div class="flex flex-row items-center">
+                            <span class="price_old">
+                                110000
+                            </span>
+                            <span class="price_product">120000</span>
+                        </div>
+                        <div class="flex flex-row items-center gap-[12px]">
+                            <div class="flex flex-row">
+                                @foreach(range(1,5) as $j)
+                                    <span class="fa-stack" style="width:0.7em">
+                                        <i class="fas text-[10px] fa-star fa-stack-1x"></i>
+                                    </span>
+                                @endforeach
+                            </div>
+                            <div class="flex flex-row text-[0.85rem] gap-[2px]">
+                                <span>0</span>
+                                <span>sold</span>
+                            </div>
+                        </div>
+                        <span class="text-[0.85rem]">
+                            Ha Noi
+                        </span>
+                    </div>
+                </a>
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                    <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
+                    <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
+                        <span class="title_product text-[0.85rem]">
+                            Test product Test product Test product Test product Test product Test product
+                        </span>
+                        <div class="flex flex-row items-center">
+                            <span class="price_old">
+                                110000
+                            </span>
+                            <span class="price_product">120000</span>
+                        </div>
+                        <div class="flex flex-row items-center gap-[12px]">
+                            <div class="flex flex-row">
+                                @foreach(range(1,5) as $j)
+                                    <span class="fa-stack" style="width:0.7em">
+                                        <i class="fas text-[10px] fa-star fa-stack-1x"></i>
+                                    </span>
+                                @endforeach
+                            </div>
+                            <div class="flex flex-row text-[0.85rem] gap-[2px]">
+                                <span>0</span>
+                                <span>sold</span>
+                            </div>
+                        </div>
+                        <span class="text-[0.85rem]">
+                            Ha Noi
+                        </span>
+                    </div>
+                </a>
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
+                    <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
+                    <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
+                        <span class="title_product text-[0.85rem]">
+                            Test product Test product Test product Test product Test product Test product
+                        </span>
+                        <div class="flex flex-row items-center">
+                            <span class="price_old">
+                                110000
+                            </span>
+                            <span class="price_product">120000</span>
+                        </div>
+                        <div class="flex flex-row items-center gap-[12px]">
+                            <div class="flex flex-row">
+                                @foreach(range(1,5) as $j)
+                                    <span class="fa-stack" style="width:0.7em">
+                                        <i class="fas text-[10px] fa-star fa-stack-1x"></i>
+                                    </span>
+                                @endforeach
+                            </div>
+                            <div class="flex flex-row text-[0.85rem] gap-[2px]">
+                                <span>0</span>
+                                <span>sold</span>
+                            </div>
+                        </div>
+                        <span class="text-[0.85rem]">
+                            Ha Noi
+                        </span>
+                    </div>
+                </a>
+                <a href="{{ route('detail') }}" class="flex flex-col product transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300">
                     <img src="{{ asset('storage/product_image/no_product.png') }}" alt="">
                     <div class="flex flex-col gap-[0.5rem] p-[0.5rem]">
                         <span class="title_product text-[0.85rem]">

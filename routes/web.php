@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +20,16 @@ Route::get('/', function () {
 })->name('main');
 
 Route::get('/register', function () {
-    return view('pages.auth.register');
+    if (!Auth::check()) {
+        return view('pages.auth.register');
+    }
+
+    return redirect()->route('main');
 })->name('register');
 
-Route::get('/sign-in', function () {
-    return view('pages.auth.sign_in');
-})->name('sign_in');
+Route::get('/sign-in', [UserController::class, 'index'])->name('sign_in');
+Route::post('/sign-in', [UserController::class, 'login'])->name('request_sign_in');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
 Route::prefix('/account')->name('account.')->group(function () {
     Route::get('profile', function () {

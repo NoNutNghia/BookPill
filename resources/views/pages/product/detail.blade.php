@@ -64,11 +64,11 @@
                 </div>
                 <div class="w-4/5 flex flex-col gap-[0.3rem]">
                     <div class="flex flex-row items-center gap-[2rem]">
-                        <div class="w-1/4 flex flex-row-reverse items-center gap-[8px]">
+                        <div class="w-1/4 flex flex-row items-center gap-[8px]">
+                            <i class="text-[#566FEF] fa-solid fa-truck"></i>
                             <span class="label_content_profile">
                                 Shipping From
                             </span>
-                            <i class="text-[#566FEF] fa-solid fa-truck"></i>
                         </div>
                         <div class="w-1/2 flex flex-row">
                             <span class="font-semibold">
@@ -77,7 +77,8 @@
                         </div>
                     </div>
                     <div class="flex flex-row items-center gap-[2rem]">
-                        <div class="w-1/4 flex flex-row-reverse">
+                        <div class="w-1/4 flex gap-[8px] flex-row">
+                            <i class="text-[#566FEF] fa-solid fa-truck" style="visibility: hidden"></i>
                             <span class="label_content_profile">
                                 Shipping Fee
                             </span>
