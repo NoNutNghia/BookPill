@@ -1,7 +1,7 @@
 const modal_download = $('#modal_download')
 const cart_user = $('#cart_user')
 const cart = $('.cart')
-const profile = $('#profile')
+const profile = $('#profile_name')
 const profile_expand = $('.profile')
 
 $('#text_header_download').hover(

@@ -94,6 +94,8 @@
 
 #profile {
     position: relative;
+    width: auto;
+    min-width: 116px;
 }
 
 .profile {

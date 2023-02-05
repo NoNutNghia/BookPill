@@ -21,8 +21,26 @@ class UserRepository implements UserRepositoryInterface
     public function getUser($email, $password)
     {
         try {
+            return $this->user->where('email', $email)->where('password', sha1($password))->first();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getUserByEmail($email)
+    {
+        try {
             return $this->user->where('email', $email)->first();
         } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getExistForgetUrlUser($forgetUrl)
+    {
+        try {
+            return $this->user->where('forget_url', $forgetUrl)->first();
+        } catch (\Exception $exception) {
             return false;
         }
     }

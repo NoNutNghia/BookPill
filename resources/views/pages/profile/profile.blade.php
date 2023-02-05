@@ -9,7 +9,7 @@
             </div>
             <div class="flex flex-col">
                 <span class="username_profile text-link-switch font-bold text-[#566FEF]">
-                    Test user name
+                    {{ \Illuminate\Support\Facades\Auth::user()->username }}
                 </span>
                 <div class="edit_profile gap-[4px] flex flex-row items-center">
                     <i class="fa-solid fa-pencil"></i>
@@ -55,7 +55,7 @@
                         </span>
                     </div>
                     <span>
-                        Test username
+                        {{ \Illuminate\Support\Facades\Auth::user()->username }}
                     </span>
                 </div>
                 <div class="flex flex-row items-center gap-[16px]">
@@ -64,7 +64,8 @@
                             Name
                         </span>
                     </div>
-                    <input type="text" class="w-[75%] mb-[0] input_auth_username">
+                    <input type="text" class="w-[75%] mb-[0] input_auth_username"
+                           value="{{ \Illuminate\Support\Facades\Auth::user()->full_name }}">
                 </div>
                 <div class="flex flex-row items-center gap-[16px]">
                     <div class="w-[20%] flex flex-row-reverse">
@@ -73,7 +74,7 @@
                         </span>
                     </div>
                     <span>
-                        Testemail@gmail.com
+                        {{ \Illuminate\Support\Facades\Auth::user()->email }}
                     </span>
                 </div>
                 <div class="flex flex-row items-center gap-[16px]">
@@ -83,7 +84,7 @@
                         </span>
                     </div>
                     <span>
-                        ********15
+                        {{ \Illuminate\Support\Facades\Auth::user()->phone_number }}
                     </span>
                 </div>
                 <div class="flex flex-row items-center gap-[16px]">
@@ -94,15 +95,15 @@
                     </div>
                     <div class="flex flex-row gap-[1rem] items-center">
                         <div class="form-check form-check-inline flex flex-row items-center gap-[4px]">
-                            <input type="radio" name="gender" checked class="bg-[#566FEF]" id="male">
+                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 1 ? 'checked' : ''}} type="radio" name="gender" checked class="bg-[#566FEF]" id="male">
                             <label for="male">Male</label>
                         </div>
                         <div class="form-check form-check-inline flex flex-row items-center gap-[4px]">
-                            <input type="radio" name="gender" id="female">
+                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 2 ? 'checked' : ''}} type="radio" name="gender" id="female">
                             <label for="female">Female</label>
                         </div>
                         <div class="flex flex-row items-center gap-[4px]">
-                            <input type="radio" name="gender" id="other">
+                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 3 ? 'checked' : ''}} type="radio" name="gender" id="other">
                             <label for="other">Other</label>
                         </div>
                     </div>

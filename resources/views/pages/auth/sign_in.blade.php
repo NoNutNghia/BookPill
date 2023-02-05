@@ -19,7 +19,7 @@
             </span>
         </button>
         <div class="flex flex-row items-center mb-[1rem]">
-            <a class="text-link" href="">
+            <a class="text-link" href="{{ route('reset') }}">
                 <span>
                     Forgot Password
                 </span>

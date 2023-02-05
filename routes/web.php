@@ -29,7 +29,11 @@ Route::get('/register', function () {
 
 Route::get('/sign-in', [UserController::class, 'index'])->name('sign_in');
 Route::post('/sign-in', [UserController::class, 'login'])->name('request_sign_in');
-Route::get('logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/reset', [UserController::class, 'resetPassword'])->name('reset');
+Route::post('/reset', [UserController::class, 'resetPasswordRequest'])->name('reset.request');
+Route::get('/verify', [UserController::class, 'verifyEmail'])->name('verify.email');
+Route::get('/reset/password', [UserController::class, 'resetPasswordIndex'])->name('reset.password');
 
 Route::prefix('/account')->name('account.')->group(function () {
     Route::get('profile', function () {

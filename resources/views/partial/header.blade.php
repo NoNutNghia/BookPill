@@ -40,10 +40,10 @@
                 </span>
             </a>
             @else
-            <div class="flex flex-row items-center gap-[0.5rem]" id="profile">
-                <a class="text-link-switch text-gray-50" href="{{ route('account.profile') }}">
+            <div class="flex flex-col justify-between items-center gap-[0.5rem]" id="profile">
+                <a class="text-link-switch text-gray-50" id="profile_name" href="{{ route('account.profile') }}">
                     <span>
-                        Test username
+                        {{ \Illuminate\Support\Facades\Auth::user()->username }}
                     </span>
                 </a>
             </div>
