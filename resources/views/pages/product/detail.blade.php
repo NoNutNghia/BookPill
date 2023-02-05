@@ -15,7 +15,7 @@
         </div>
         <div class="w-3/5 flex flex-col product_detail">
             <span class="title_product_detail">
-                Test product Test product Test product Test product Test product Test product
+                {{ $product->title }}
             </span>
             <div class="flex flex-row items-center rating_product gap-[2rem]">
                 <div class="flex flex-row items-center gap-[4px]">
@@ -51,10 +51,12 @@
                 </div>
             </div>
             <div class="flex flex-row items-center price">
-                <span class="text-[1rem] price_old">
-                    110000
-                </span>
-                <span class="text-[1.875rem] font-semibold price_product">120000</span>
+                @if($product->discount == 0.0)
+                    <span class="text-[1.875rem] font-semibold price_product">{{ $product->price }}</span>
+                @else
+                    <span class="text-[1rem] price_old">{{ $product->price }}</span>
+                    <span class="text-[1.875rem] font-semibold price_product">{{ $product->price - ($product->price * ($product->discount) / 100) }}</span>
+                @endif
             </div>
             <div class="flex flex-row option_get_product">
                 <div class="w-1/5 flex flex-row">
@@ -72,7 +74,7 @@
                         </div>
                         <div class="w-1/2 flex flex-row">
                             <span class="font-semibold">
-                                Ha Noi
+                                {{ $product->deliveryFrom->delivery_from }}
                             </span>
                         </div>
                     </div>

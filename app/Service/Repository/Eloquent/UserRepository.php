@@ -11,7 +11,6 @@ class UserRepository implements UserRepositoryInterface
     private User $user;
 
     /**
-     * @param User $user
      */
     public function __construct()
     {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.product.main');
-})->name('main');
+Route::get('/', [ProductController::class, 'getProductList'])->name('main');
 
 Route::get('/register', function () {
     if (!Auth::check()) {
@@ -41,6 +40,4 @@ Route::prefix('/account')->name('account.')->group(function () {
     })->name('profile');
 });
 
-Route::get('/product/detail', function () {
-    return view('pages.product.detail');
-})->name('detail');
+Route::get('/product/detail', [ProductController::class, 'getProductDetail'])->name('detail');

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DeliverySeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class DeliverySeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('delivery')->insert(array(
+            array(
+                'delivery_from' => 'TP. Ha Noi'
+            ),
+            array(
+                'delivery_from' => 'TP. Ho Chi Minh'
+            )
+        ));
     }
 }

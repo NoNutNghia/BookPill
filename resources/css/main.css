@@ -87,6 +87,7 @@
 .product img {
     border-bottom: rgba(86, 111, 239, 0.53) 1px solid;
     margin-bottom: 0.5rem;
+    aspect-ratio: 3/4;
 }
 
 .title_product {
