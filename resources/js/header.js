@@ -3,6 +3,9 @@ const cart_user = $('#cart_user')
 const cart = $('.cart')
 const profile = $('#profile_name')
 const profile_expand = $('.profile')
+const searchProduct = $('#search_product')
+const searchResult = $('.search_result')
+const searchDropDown = $('.search_dropdown')
 
 $('#text_header_download').hover(
     function () {
@@ -22,6 +25,10 @@ $('#text_header_download').hover(
         $('#modal_download').css('display', 'none')
     }
 )
+
+$(document).on('click', function () {
+
+})
 
 cart_user.hover(
     function () {
@@ -60,3 +67,26 @@ profile.hover(
     function () {
         profile_expand.css('display', 'none')
     })
+
+searchProduct.on('keyup', function () {
+    let searchKey = this.value.trim()
+    if(searchKey) {
+        $.ajax({
+            type: 'POST',
+            url: routeSearchTitleProduct(),
+            headers: {'X-CSRF-TOKEN': getCSRFToken()},
+            data: {
+                searchKey: searchKey
+            },
+            success: function (response) {
+                if(response.result) {
+                    searchResult.html(response.data)
+                    searchDropDown.show()
+                }
+            }
+        })
+    } else {
+        searchDropDown.hide()
+    }
+})
+

@@ -25,6 +25,11 @@
     </main>
 </body>
 
+<script type="text/javascript">
+    function getCSRFToken() {
+        return '{{ csrf_token() }}'
+    }
+</script>
 <script src="{{ asset('assets/js/header.js') }}"></script>
 @yield('script')
 </html>

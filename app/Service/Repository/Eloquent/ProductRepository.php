@@ -4,6 +4,8 @@ namespace App\Service\Repository\Eloquent;
 
 use App\Models\Product;
 use App\Service\Repository\ProductRepositoryInterface;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ProductRepository implements ProductRepositoryInterface
 {
@@ -19,7 +21,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function getProductList($searchKey = '')
     {
         try {
-            return $this->product->get();
+            return $this->product->orderBy('title')->get();
         } catch (\Exception $e) {
             return false;
         }
@@ -33,4 +35,27 @@ class ProductRepository implements ProductRepositoryInterface
         }
     }
 
+    public function getProductByFilter($filter)
+    {
+        try {
+            return $this->product->where(function ($query) use ($filter){
+                $query->whereIn('delivery', $filter->deliveryFrom)
+                    ->where('price', '>=', $filter->min_price)
+                    ->where('price', '<=', $filter->max_price ?: 99999999999999999)
+                    ->where('genre', 'LIKE', $filter->genreList);
+            })->orderBy('title')->get();
+        } catch (\Exception $e) {
+            Log::error($e);
+            return false;
+        }
+    }
+
+    public function getTitleProduct($searchKey)
+    {
+        try {
+            return $this->product->select('id', 'title')->where('title', 'LIKE', $searchKey)->orderBy('title')->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

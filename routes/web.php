@@ -40,4 +40,10 @@ Route::prefix('/account')->name('account.')->group(function () {
     })->name('profile');
 });
 
-Route::get('/product/detail', [ProductController::class, 'getProductDetail'])->name('detail');
+Route::prefix('/product')->name('product.')->group(function () {
+    Route::get('/', [ProductController::class, 'getProductList'])->name('main');
+    Route::get('/detail', [ProductController::class, 'getProductDetail'])->name('detail');
+    Route::post('/filter', [ProductController::class, 'getProductFilter'])->name('filter');
+    Route::post('/title', [ProductController::class, 'getProductTitle'])->name('title');
+});
+

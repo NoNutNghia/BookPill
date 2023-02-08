@@ -17,11 +17,22 @@ class Product extends Model
         'discount',
         'genre',
         'age',
-        'delivery'
+        'delivery',
+        'author'
     ];
 
     public function deliveryFrom()
     {
         return $this->belongsTo(Delivery::class, 'delivery', 'id');
+    }
+
+    public function authorProduct()
+    {
+        return $this->belongsTo(Author::class, 'author', 'id');
+    }
+
+    public function ageRange()
+    {
+        return $this->belongsTo(AgeRange::class, 'age', 'id');
     }
 }

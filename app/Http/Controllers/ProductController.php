@@ -26,4 +26,14 @@ class ProductController extends Controller
     {
         return $this->productService->getProductDetail($request);
     }
+
+    public function getProductFilter(Request $request)
+    {
+        return $this->productService->getProductFilter($request);
+    }
+
+    public function getProductTitle(Request $request)
+    {
+        return $this->productService->getProductTitle($request);
+    }
 }

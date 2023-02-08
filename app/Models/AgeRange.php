@@ -14,4 +14,9 @@ class AgeRange extends Model
     protected $fillable = [
         'age_range'
     ];
+
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'age', 'id');
+    }
 }

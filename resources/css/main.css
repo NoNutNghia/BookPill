@@ -24,6 +24,10 @@
     margin-right: 6px;
 }
 
+input[type='checkbox'] {
+    cursor: pointer;
+}
+
 .input_price_filter {
     width: 5rem;
     border: 1px solid rgba(0,0,0,.26);
@@ -117,5 +121,10 @@
 .price_old::before,
 .price_product::before{
     content: "₫";
+}
+
+.genre_filter {
+    max-height: 250px;
+    overflow-y: auto;
 }
 

@@ -14,4 +14,9 @@ class Author extends Model
     protected $fillable = [
         'author_name'
     ];
+
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'author', 'id');
+    }
 }

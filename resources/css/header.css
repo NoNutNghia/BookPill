@@ -67,7 +67,7 @@
     height: 0;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
-    border-bottom: 12px solid white;
+    border-bottom: 15px solid white;
     margin-right: 20px;
     z-index: 2;
 }
@@ -130,4 +130,44 @@
     border-right: 20px solid transparent;
     border-bottom: 15px solid white;
     z-index: 4;
+}
+
+#search_area {
+    position: relative;
+
+}
+
+.search_dropdown {
+    display: none;
+}
+
+.search_result {
+    position: absolute;
+    width: 100%;
+    background: white;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 9%);
+    height: auto;
+    max-height: 250px;
+    padding: 2px 0;
+    top: 45px;
+    border-radius: 2px;
+    overflow-y: auto;
+}
+
+.search_result a {
+    height: 50px;
+    padding: 8px 16px;
+}
+
+.search_result a:hover {
+    background: rgba(226, 219, 219, 0.25);
+}
+
+.search_result a {
+    color: #566FEF;
+}
+
+.no_title_product_found {
+    height: 100px;
+    color: #566FEF;
 }

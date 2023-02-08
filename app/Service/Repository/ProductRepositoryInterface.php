@@ -7,4 +7,8 @@ interface ProductRepositoryInterface
     public function getProductList($searchKey);
 
     public function getProductDetail($id);
+
+    public function getProductByFilter($filter);
+
+    public function getTitleProduct($searchKey);
 }

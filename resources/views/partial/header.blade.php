@@ -73,15 +73,86 @@
             <img class="image_header" src="{{ asset('storage/source_image/main_logo.png') }}" alt="">
         </a>
         <div class="flex flex-row w-4/5">
-            <div class="w-4/5 flex flex-row-reverse items-center">
-                <input type="text" class="search_header">
+            <div class="w-4/5 flex flex-row-reverse items-center" id="search_area">
+                <input type="text" class="search_header" id="search_product">
                 <button id="button_search" class="button-action">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
+
+                <div class="search_dropdown">
+                    <div class="flex flex-col search_result">
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        <a href="" class="flex flex-row items-center">
+                            <span>
+                                Hello, Hello
+                            </span>
+                        </a>
+                        {{--                    <div class="flex flex-col no_title_product_found justify-center items-center">--}}
+                        {{--                        <span class="">--}}
+                        {{--                            No Product Found--}}
+                        {{--                        </span>--}}
+                        {{--                    </div>--}}
+                    </div>
+                </div>
+
             </div>
             <div class="w-1/5 flex flex-col justify-end items-center">
                 <i class="fa-sharp fa-solid fa-cart-shopping" id="cart_user"></i>
-                <div class="flex flex-row-reverse absolute" style="width: 400px ; right: calc(8%); bottom: 8px">
+                <div class="flex flex-row-reverse absolute" style="width: 400px ; right: calc(8%); bottom: 9px">
                     <div class="cart cart_expand"></div>
                 </div>
                 <div id="cart_detail" class="cart">
@@ -135,3 +206,9 @@
     </div>
 
 </header>
+
+<script>
+    function routeSearchTitleProduct() {
+        return '{{ route('product.title') }}';
+    }
+</script>
