@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Service\Repository\CartRepositoryInterface;
+use App\Service\Repository\Eloquent\CartRepository;
 use App\Service\Repository\Eloquent\GenreRepository;
 use App\Service\Repository\Eloquent\ProductRepository;
 use App\Service\Repository\Eloquent\UserRepository;
@@ -27,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->singleton(GenreRepositoryInterface::class, function () {
             return new GenreRepository();
+        });
+        $this->app->singleton(CartRepositoryInterface::class, function () {
+            return new CartRepository();
         });
     }
 

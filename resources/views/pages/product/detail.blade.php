@@ -124,7 +124,7 @@
 
                 </div>
                 <div class="flex flex-row button_action_product gap-[1rem]">
-                    <button class="flex flex-row items-center add_to_cart gap-[4px]">
+                    <button value="{{ $product->id }}" class="flex flex-row items-center add_to_cart gap-[4px]">
                         <i class="fa-solid fa-cart-plus"></i>
                         <span>Add To Cart</span>
                     </button>
@@ -160,5 +160,10 @@
 @endsection
 
 @section('script')
+    <script type="text/javascript">
+        function routeAddProductToCart() {
+            return '{{ route('account.cart') }}'
+        }
+    </script>
     <script src="{{ asset('assets/js/detail.js') }}"></script>
 @endsection

@@ -81,71 +81,6 @@
 
                 <div class="search_dropdown">
                     <div class="flex flex-col search_result">
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        <a href="" class="flex flex-row items-center">
-                            <span>
-                                Hello, Hello
-                            </span>
-                        </a>
-                        {{--                    <div class="flex flex-col no_title_product_found justify-center items-center">--}}
-                        {{--                        <span class="">--}}
-                        {{--                            No Product Found--}}
-                        {{--                        </span>--}}
-                        {{--                    </div>--}}
                     </div>
                 </div>
 
@@ -156,50 +91,6 @@
                     <div class="cart cart_expand"></div>
                 </div>
                 <div id="cart_detail" class="cart">
-                    <div class="flex flex-col">
-                        <span class="text_card">
-                            Recently Added Products
-                        </span>
-                        <div class="flex flex-row justify-between cart_item">
-                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
-                            <span class="w-[67%] text-[14px] font-bold">
-                                Test Test Test Test Test Test
-                            </span>
-                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
-                                ₫110000
-                            </span>
-                        </div>
-                        <div class="flex flex-row justify-between cart_item">
-                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
-                            <span class="w-[67%] text-[14px] font-bold">
-                                Test Test Test Test Test Test
-                            </span>
-                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
-                                ₫110000
-                            </span>
-                        </div>
-                        <div class="flex flex-row justify-between cart_item">
-                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
-                            <span class="w-[67%] text-[14px] font-bold">
-                                Test Test Test Test Test Test
-                            </span>
-                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
-                                ₫110000
-                            </span>
-                        </div>
-                        <div class="flex flex-row justify-between cart_item">
-                            <img width=12%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">
-                            <span class="w-[67%] text-[14px] font-bold">
-                                Test Test Test Test Test Test
-                            </span>
-                            <span class="w-[15%] text-[14px] text-[#566FEF] break-words">
-                                ₫110000
-                            </span>
-                        </div>
-{{--                        <div class="flex flex-row items-center justify-center">--}}
-{{--                            <img width=60%" src="{{ asset('storage/product_image/no_product.png') }}" alt="">--}}
-{{--                        </div>--}}
-                    </div>
                 </div>
             </div>
         </div>
@@ -209,6 +100,10 @@
 
 <script>
     function routeSearchTitleProduct() {
-        return '{{ route('product.title') }}';
+        return '{{ route('product.title') }}'
+    }
+
+    function routeCartList() {
+        return '{{ route('account.cart') }}'
     }
 </script>

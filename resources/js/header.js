@@ -90,3 +90,20 @@ searchProduct.on('keyup', function () {
     }
 })
 
+function getCartList() {
+    $.ajax({
+        type: 'GET',
+        url: routeCartList(),
+        headers: {'X-CSRF-TOKEN': getCSRFToken()},
+        success: function (response) {
+            if(response.result) {
+                $('#cart_detail').html(response.data)
+            }
+        }
+    })
+}
+
+getCartList()
+
+
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +36,12 @@ Route::get('/verify', [UserController::class, 'verifyEmail'])->name('verify.emai
 Route::get('/reset/password', [UserController::class, 'resetPasswordIndex'])->name('reset.password');
 
 Route::prefix('/account')->name('account.')->group(function () {
-    Route::get('profile', function () {
+    Route::get('/profile', function () {
         return view('pages.profile.profile');
     })->name('profile');
+    Route::get('/cart', [CartController::class, 'getCartList'])->name('cart');
+    Route::post('/cart', [CartController::class, 'addProductToCart'])->name('add_cart');
+
 });
 
 Route::prefix('/product')->name('product.')->group(function () {
@@ -47,3 +51,8 @@ Route::prefix('/product')->name('product.')->group(function () {
     Route::post('/title', [ProductController::class, 'getProductTitle'])->name('title');
 });
 
+Route::prefix('/admin')->name('admin')->group(function () {
+    Route::get('/product')->name('product');
+    Route::get('/users')->name('product');
+    Route::get('/statistical')->name('statistical');
+});
