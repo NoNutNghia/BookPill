@@ -43,4 +43,17 @@ class UserRepository implements UserRepositoryInterface
             return false;
         }
     }
+
+    public function getListUser($searchKey = '')
+    {
+        try {
+            return $this->user->where(function ($query) use ($searchKey){
+                $query->where('username', 'LIKE' ,$searchKey)
+                    ->where('role', 2)
+                    ->where('status', 1);
+            })->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

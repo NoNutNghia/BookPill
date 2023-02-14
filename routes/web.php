@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -51,8 +53,13 @@ Route::prefix('/product')->name('product.')->group(function () {
     Route::post('/title', [ProductController::class, 'getProductTitle'])->name('title');
 });
 
-Route::prefix('/admin')->name('admin')->group(function () {
-    Route::get('/product')->name('product');
-    Route::get('/users')->name('product');
+Route::prefix('/admin')->name('admin.')->group(function () {
+    Route::prefix('/product')->name('product.')->group(function () {
+        Route::get('/list', [AdminProductController::class, 'getProductList'])->name('list');
+        Route::get('/detail', [AdminProductController::class, 'getProductDetail'])->name('detail');
+    });
+    Route::prefix('/user')->name('user.')->group(function () {
+        Route::get('/list', [AdminUserController::class, 'getUserList'])->name('list');
+    });
     Route::get('/statistical')->name('statistical');
 });

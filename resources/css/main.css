@@ -128,3 +128,23 @@ input[type='checkbox'] {
     overflow-y: auto;
 }
 
+.pager ul a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #566FEF;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.active_choice {
+    background-image: linear-gradient(to right, #566FEF, #53A4E4);
+}
+
+
+

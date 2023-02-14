@@ -9,4 +9,6 @@ interface UserRepositoryInterface
     public function getUserByEmail($email);
 
     public function getExistForgetUrlUser($forgetUrl);
+
+    public function getListUser($searchKey);
 }

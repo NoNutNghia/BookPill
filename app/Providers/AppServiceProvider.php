@@ -10,6 +10,7 @@ use App\Service\Repository\Eloquent\UserRepository;
 use App\Service\Repository\GenreRepositoryInterface;
 use App\Service\Repository\ProductRepositoryInterface;
 use App\Service\Repository\UserRepositoryInterface;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -42,6 +43,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::defaultView('partial.pagination');
     }
 }

@@ -21,6 +21,8 @@ class User extends Authenticatable
         'full_name',
         'email',
         'password',
+        'role',
+        'status'
     ];
 
     protected $table = 'users';
@@ -45,5 +47,9 @@ class User extends Authenticatable
 
     public function cart() {
         return $this->hasOne(Cart::class, 'id_user', 'id');
+    }
+
+    public function statusUser() {
+        return $this->belongsTo(Status::class, 'status', 'id');
     }
 }

@@ -20,7 +20,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function getProductList($searchKey = '')
     {
         try {
-            return $this->product->orderBy('title')->get();
+            return $this->product->orderBy('title')->paginate(5);
         } catch (\Exception $e) {
             return false;
         }

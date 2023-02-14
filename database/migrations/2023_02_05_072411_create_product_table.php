@@ -22,6 +22,8 @@ class CreateProductTable extends Migration
             $table->float('discount');
             $table->json('genre');
             $table->tinyInteger('age');
+            $table->integer('number_of_product');
+            $table->tinyInteger('status_product');
             $table->timestamps();
         });
     }

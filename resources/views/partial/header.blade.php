@@ -86,12 +86,15 @@
 
             </div>
             <div class="w-1/5 flex flex-col justify-end items-center">
-                <i class="fa-sharp fa-solid fa-cart-shopping" id="cart_user"></i>
-                <div class="flex flex-row-reverse absolute" style="width: 400px ; right: calc(8%); bottom: 9px">
-                    <div class="cart cart_expand"></div>
-                </div>
-                <div id="cart_detail" class="cart">
-                </div>
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    <i class="fa-sharp fa-solid fa-cart-shopping" id="cart_user"></i>
+                    <div class="flex flex-row-reverse absolute" style="width: 400px ; right: calc(8%); bottom: 9px">
+                        <div class="cart cart_expand"></div>
+                    </div>
+                    <div id="cart_detail" class="cart">
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>

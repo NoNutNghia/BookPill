@@ -24,6 +24,8 @@ class ProductSeeder extends Seeder
                 'discount' => 20,
                 'genre' => json_encode(array('1', '2', '3', '4')),
                 'age' => 2,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -35,6 +37,8 @@ class ProductSeeder extends Seeder
                 'discount' => 5,
                 'genre' => json_encode(array('5', '6')),
                 'age' => 4,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -46,6 +50,8 @@ class ProductSeeder extends Seeder
                 'discount' => 0,
                 'genre' => json_encode(array('7', '8')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -57,6 +63,8 @@ class ProductSeeder extends Seeder
                 'discount' => 4,
                 'genre' => json_encode(array('3', '9', '10')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -68,6 +76,8 @@ class ProductSeeder extends Seeder
                 'discount' => 7,
                 'genre' => json_encode(array('7', '8')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -79,6 +89,8 @@ class ProductSeeder extends Seeder
                 'discount' => 12,
                 'genre' => json_encode(array('11', '12')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -90,6 +102,8 @@ class ProductSeeder extends Seeder
                 'discount' => 22,
                 'genre' => json_encode(array('6', '11', '12', '13')),
                 'age' => 2,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -101,6 +115,8 @@ class ProductSeeder extends Seeder
                 'discount' => 3,
                 'genre' => json_encode(array('5', '14')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -112,6 +128,8 @@ class ProductSeeder extends Seeder
                 'discount' => 5,
                 'genre' => json_encode(array('11', '15')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -123,6 +141,8 @@ class ProductSeeder extends Seeder
                 'discount' => 6,
                 'genre' => json_encode(array('2', '3', '16')),
                 'age' => 2,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -134,6 +154,8 @@ class ProductSeeder extends Seeder
                 'discount' => 0,
                 'genre' => json_encode(array('3', '17', '18', '19')),
                 'age' => 3,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -145,6 +167,8 @@ class ProductSeeder extends Seeder
                 'discount' => 20,
                 'genre' => json_encode(array('1', '3', '11', '17')),
                 'age' => 3,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -156,6 +180,8 @@ class ProductSeeder extends Seeder
                 'discount' => 16,
                 'genre' => json_encode(array('1', '3', '11', '20', '21')),
                 'age' => 4,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -167,6 +193,8 @@ class ProductSeeder extends Seeder
                 'discount' => 7,
                 'genre' => json_encode(array('10', '16', '22', '23', '24')),
                 'age' => 3,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -178,6 +206,8 @@ class ProductSeeder extends Seeder
                 'discount' => 18,
                 'genre' => json_encode(array('25', '26', '27')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -189,6 +219,8 @@ class ProductSeeder extends Seeder
                 'discount' => 0,
                 'genre' => json_encode(array('27', '28')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -200,6 +232,8 @@ class ProductSeeder extends Seeder
                 'discount' => 0,
                 'genre' => json_encode(array('27', '28', '29')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -211,6 +245,8 @@ class ProductSeeder extends Seeder
                 'discount' => 0,
                 'genre' => json_encode(array('27', '28', '29')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -222,6 +258,8 @@ class ProductSeeder extends Seeder
                 'discount' => 5,
                 'genre' => json_encode(array('29', '30', '31', '32')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -233,6 +271,8 @@ class ProductSeeder extends Seeder
                 'discount' => 10,
                 'genre' => json_encode(array('27', '29', '32')),
                 'age' => 1,
+                'status_product' => 1,
+                'number_of_product' => 1000,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ),
@@ -244,6 +284,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -255,6 +296,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -266,6 +308,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -277,6 +320,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -288,6 +332,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -299,6 +344,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -310,6 +356,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -321,6 +368,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -332,6 +380,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -343,6 +392,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -354,6 +404,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                        'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -365,6 +416,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -376,6 +428,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -387,6 +440,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -398,6 +452,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -409,6 +464,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -420,6 +476,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -431,6 +488,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -442,6 +500,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -453,6 +512,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -464,6 +524,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -475,6 +536,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -486,6 +548,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -497,6 +560,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),
@@ -508,6 +572,7 @@ class ProductSeeder extends Seeder
 //                'discount' => ,
 //                'genre' => json_encode(array()),
 //                'age' => ,
+//                'number_of_product' => 1000,
 //                'created_at' => Carbon::now(),
 //                'updated_at' => Carbon::now()
 //            ),

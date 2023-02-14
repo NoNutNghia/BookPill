@@ -18,6 +18,8 @@ class Product extends Model
         'genre',
         'age',
         'delivery',
+        'status_product',
+        'number_of_product',
         'author'
     ];
 
@@ -34,5 +36,10 @@ class Product extends Model
     public function ageRange()
     {
         return $this->belongsTo(AgeRange::class, 'age', 'id');
+    }
+
+    public function statusProduct()
+    {
+        return $this->belongsTo(StatusProduct::class, 'status_product', 'id');
     }
 }

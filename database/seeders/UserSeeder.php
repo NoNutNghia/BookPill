@@ -24,6 +24,8 @@ class UserSeeder extends Seeder
             'email' => 'nghiann@zyyx.jp',
             'password' => sha1('admin'),
             'gender' => 1,
+            'role' => 2,
+            'status' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ));
