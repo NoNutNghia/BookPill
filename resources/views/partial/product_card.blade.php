@@ -21,7 +21,7 @@
                 @endforeach
             </div>
             <div class="flex flex-row text-[0.85rem] gap-[2px]">
-                <span>0</span>
+                <span>{{ $product->sold }}</span>
                 <span>sold</span>
             </div>
         </div>

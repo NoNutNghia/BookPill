@@ -24,6 +24,8 @@ class CreateProductTable extends Migration
             $table->tinyInteger('age');
             $table->integer('number_of_product');
             $table->tinyInteger('status_product');
+            $table->float('rating');
+            $table->integer('sold');
             $table->timestamps();
         });
     }

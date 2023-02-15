@@ -10,7 +10,7 @@
             User Management
         </span>
     </a>
-    <a href="">
+    <a href="{{ route('admin.statistical.main') }}" class="{{ str_contains($currentUrl, 'statistical') ? 'active_tab' : '' }}">
         <span>
             Statistical Product
         </span>

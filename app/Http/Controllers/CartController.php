@@ -27,4 +27,9 @@ class CartController extends Controller
         return $this->cartService->addProductToCart($request);
     }
 
+    public function removeProductFromCart(Request $request)
+    {
+        return $this->cartService->removeProductFromCart($request);
+    }
+
 }

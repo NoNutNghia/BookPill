@@ -3,8 +3,8 @@
 @section('content')
     <div class="flex flex-col">
         <div class="flex flex-row items-center justify-between mb-[1rem]">
-            <form class="flex flex-row items-center justify-between">
-                <input type="text" class="input_auth_username mb-[0] mr-[8px]" placeholder="Username">
+            <form action="{{ route('admin.user.list') }}" method="GET" class="flex flex-row items-center w-[35%] justify-between">
+                <input type="text" class="w-4/5 input_auth_username mb-[0] mr-[8px]" name="searchKey" placeholder="Username / Phone number / Email">
 
                 <button class="button-action rounded font-bold">
                     <span>

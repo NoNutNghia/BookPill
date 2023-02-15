@@ -34,3 +34,9 @@
     white-space: nowrap;
 }
 
+.active_choice_tab_profile i,
+.active_choice_tab_profile span
+{
+    color: rgb(217 119 6 / var(--tw-text-opacity)) !important;
+}
+

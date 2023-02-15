@@ -20,7 +20,7 @@
                 <div class="flex flex-row items-center rating_product gap-[2rem]">
                     <div class="flex flex-row items-center gap-[4px]">
                     <span class="text-[#566FEF] underline">
-                        5.0
+                        {{ $product->rating }}
                     </span>
                         <div class="flex flex-row gap-[2px]">
                             @foreach(range(1,5) as $j)
@@ -43,7 +43,7 @@
                     <div class="w-[1px] h-[28px] hr-vertical">
                     </div><div class="flex flex-row items-center gap-[4px]">
                     <span>
-                        0
+                        {{ $product->sold }}
                     </span>
                         <span class="label_content_profile">
                         Sold
@@ -124,7 +124,10 @@
 
                 </div>
                 <div class="flex flex-row button_action_product gap-[1rem]">
-                    <button value="{{ $product->id }}" class="flex flex-row items-center add_to_cart gap-[4px]">
+                    <button value="{{ $product->id }}"
+                            class="flex flex-row items-center add_to_cart gap-[4px]"
+                            {{ \Illuminate\Support\Facades\Auth::check() ? '' : 'disabled' }}
+                    >
                         <i class="fa-solid fa-cart-plus"></i>
                         <span>Add To Cart</span>
                     </button>

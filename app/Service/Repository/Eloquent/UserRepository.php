@@ -48,10 +48,12 @@ class UserRepository implements UserRepositoryInterface
     {
         try {
             return $this->user->where(function ($query) use ($searchKey){
-                $query->where('username', 'LIKE' ,$searchKey)
+                $query->where('username', 'LIKE' , $searchKey)
+                    ->orWhere('phone_number', 'LIKE', $searchKey)
+                    ->orWhere('email', 'LIKE', $searchKey)
                     ->where('role', 2)
                     ->where('status', 1);
-            })->get();
+            })->paginate(10);
         } catch (\Exception $e) {
             return false;
         }

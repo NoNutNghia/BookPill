@@ -25,9 +25,28 @@ class ProductAdminService
         $this->genreRepository = $genreRepository;
     }
 
+    public function getProductAdd(Request $request)
+    {
+        $genreList = $this->genreRepository->getGenre();
+        return view('pages.admin.product.add',
+            compact('genreList')
+        );
+    }
+
+    public function addProduct(Request $request)
+    {
+        return $request;
+    }
+
     public function getProductList(Request $request)
     {
-        $productList = $this->productRepository->getProductList();
+        if(!$request->searchKey) {
+            $key = '%%';
+        } else {
+            $key = '%' . str_replace('%', '\%', trim($request->searchKey)) . '%';
+        }
+
+        $productList = $this->productRepository->getProductAdminList($key);
         return view('pages.admin.product.list', compact('productList'));
     }
 
@@ -42,6 +61,24 @@ class ProductAdminService
         return view('pages.admin.product.detail',
             compact('foundProduct', 'genreList', 'genreProduct', 'imageList')
         );
+    }
+
+    public function getProductEdit(Request $request)
+    {
+        $foundProduct = $this->productRepository->getProductDetail($request->id);
+        $genreList = $this->genreRepository->getGenre();
+        $imageList = $this->getImageFile($foundProduct->id);
+        $genreProduct = collect(json_decode($foundProduct->genre))->map(function ($genre, $key) {
+            return (int) $genre;
+        });
+        return view('pages.admin.product.edit',
+            compact('foundProduct', 'genreList', 'genreProduct', 'imageList')
+        );
+    }
+
+    public function editProduct(Request $request)
+    {
+        return $request;
     }
 
     private function getImageFile($id)

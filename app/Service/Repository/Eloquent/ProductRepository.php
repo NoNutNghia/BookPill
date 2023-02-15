@@ -20,7 +20,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function getProductList($searchKey = '')
     {
         try {
-            return $this->product->orderBy('title')->paginate(5);
+            return $this->product->orderBy('title')->get();
         } catch (\Exception $e) {
             return false;
         }
@@ -62,6 +62,15 @@ class ProductRepository implements ProductRepositoryInterface
     {
         try {
             return $this->product->whereIn('id', $idProductList)->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getProductAdminList($searchKey = '')
+    {
+        try {
+            return $this->product->where('title', 'LIKE', $searchKey)->orderBy('title')->paginate(5);
         } catch (\Exception $e) {
             return false;
         }

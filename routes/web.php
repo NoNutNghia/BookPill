@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\StatisticalController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -37,13 +38,17 @@ Route::post('/reset', [UserController::class, 'resetPasswordRequest'])->name('re
 Route::get('/verify', [UserController::class, 'verifyEmail'])->name('verify.email');
 Route::get('/reset/password', [UserController::class, 'resetPasswordIndex'])->name('reset.password');
 
-Route::prefix('/account')->name('account.')->group(function () {
-    Route::get('/profile', function () {
-        return view('pages.profile.profile');
-    })->name('profile');
-    Route::get('/cart', [CartController::class, 'getCartList'])->name('cart');
-    Route::post('/cart', [CartController::class, 'addProductToCart'])->name('add_cart');
-
+Route::middleware('user')->group(function () {
+    Route::prefix('/account')->name('account.')->group(function () {
+        Route::get('/profile', function () {
+            return view('pages.profile.profile');
+        })->name('profile');
+        Route::get('/cart', [CartController::class, 'getCartList'])->name('cart');
+        Route::post('/cart', [CartController::class, 'addProductToCart'])->name('add_cart');
+        Route::post('/cart/remove', [CartController::class, 'removeProductFromCart'])->name('remove_product');
+        Route::get('order')->name('order');
+        Route::get('purchase')->name('purchase');
+    });
 });
 
 Route::prefix('/product')->name('product.')->group(function () {
@@ -55,11 +60,17 @@ Route::prefix('/product')->name('product.')->group(function () {
 
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::prefix('/product')->name('product.')->group(function () {
+        Route::get('/add', [AdminProductController::class, 'getProductAdd'])->name('add');
+        Route::post('/add', [AdminProductController::class, 'addProduct'])->name('post_add');
         Route::get('/list', [AdminProductController::class, 'getProductList'])->name('list');
         Route::get('/detail', [AdminProductController::class, 'getProductDetail'])->name('detail');
+        Route::get('/edit', [AdminProductController::class, 'getProductEdit'])->name('edit');
+        Route::post('/edit', [AdminProductController::class, 'editProduct'])->name('post_edit');
     });
     Route::prefix('/user')->name('user.')->group(function () {
         Route::get('/list', [AdminUserController::class, 'getUserList'])->name('list');
     });
-    Route::get('/statistical')->name('statistical');
+    Route::prefix('/statistical')->name('statistical.')->group(function () {
+        Route::get('/main', [StatisticalController::class, 'getStatisticalProduct'])->name('main');
+    });
 });

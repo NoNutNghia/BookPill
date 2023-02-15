@@ -1,41 +1,6 @@
-@extends('layout.master')
+@extends('pages.profile.account_page')
 
-@section('content')
-<div class="flex flex-row">
-    <div class="flex flex-col gap-[1rem] dashboard_profile">
-        <div class="header_profile flex flex-row items-center">
-            <div class="w-[48px] mr-[12px]">
-                <img class="image_user" src="{{ asset('storage/profile_image/Test.jpeg') }}" alt="">
-            </div>
-            <div class="flex flex-col">
-                <span class="username_profile text-link-switch font-bold text-[#566FEF]">
-                    {{ \Illuminate\Support\Facades\Auth::user()->username }}
-                </span>
-                <div class="edit_profile gap-[4px] flex flex-row items-center">
-                    <i class="fa-solid fa-pencil"></i>
-                    <span>
-                        Edit profile
-                    </span>
-                </div>
-            </div>
-
-        </div>
-        <hr>
-        <div class="header_profile flex flex-col gap-[0.7rem] justify-center">
-            <div class="flex flex-row items-center gap-[12px]">
-                <i class="text-[#566FEF] fa-solid fa-user"></i>
-                <span class="text-link-switch font-bold text-[#566FEF]">
-                    My Account
-                </span>
-            </div>
-            <div class="flex flex-row items-center gap-[12px]">
-                <i class="text-[#566FEF] text-[13px] fa-solid fa-cart-shopping"></i>
-                <span class="text-link-switch font-bold text-[#566FEF]">
-                    My Purchaser
-                </span>
-            </div>
-        </div>
-    </div>
+@section('content_profile')
     <div class="flex-auto profile_content gap-[0.6rem] flex flex-col">
         <div class="flex flex-col pt-[1.125rem] pb-[1.125rem] gap-[2px] text-[#555]">
             <span class="text-[1.125rem] font-[500]">
@@ -95,15 +60,15 @@
                     </div>
                     <div class="flex flex-row gap-[1rem] items-center">
                         <div class="form-check form-check-inline flex flex-row items-center gap-[4px]">
-                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 1 ? 'checked' : ''}} type="radio" name="gender" checked class="bg-[#566FEF]" id="male">
+                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 1 ? 'checked' : ''}} type="radio" value="1" name="gender">
                             <label for="male">Male</label>
                         </div>
                         <div class="form-check form-check-inline flex flex-row items-center gap-[4px]">
-                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 2 ? 'checked' : ''}} type="radio" name="gender" id="female">
+                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 2 ? 'checked' : ''}} type="radio" value="2" name="gender">
                             <label for="female">Female</label>
                         </div>
                         <div class="flex flex-row items-center gap-[4px]">
-                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 3 ? 'checked' : ''}} type="radio" name="gender" id="other">
+                            <input {{\Illuminate\Support\Facades\Auth::user()->gender == 3 ? 'checked' : ''}} type="radio" value="3" name="gender">
                             <label for="other">Other</label>
                         </div>
                     </div>
@@ -115,17 +80,7 @@
                         </span>
                     </div>
                     <div class="flex w-[65%] flex-row items-center gap-[1rem]">
-                        <select class="mb-[0] w-1/3 input_auth_username" name="" id="dayOfBirth">
-                            <option value="">26</option>
-                        </select>
-
-                        <select class="mb-[0] w-1/3 input_auth_username" name="" id="monthOfBirth">
-                            <option value="7">July</option>
-                        </select>
-
-                        <select class="mb-[0] w-1/3 input_auth_username" name="" id="yearOfBirth">
-                            <option value="2001">2001</option>
-                        </select>
+                        <input type="date" class="input_auth_username m-0" value="{{ \Carbon\Carbon::now()}}">
                     </div>
                 </div>
                 <div class="flex flex-row items-center gap-[16px]">
@@ -160,5 +115,4 @@
 
         </div>
     </div>
-</div>
 @endsection

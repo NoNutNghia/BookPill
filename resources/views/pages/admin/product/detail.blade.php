@@ -94,7 +94,7 @@
                         <div class="flex flex-row justify-between">
                             <img class="image_border w-1/2" src="{{ asset('storage/product_image/' . $foundProduct->id . '/' . $image) }}" alt="">
                             <span class="w-[49%] text-[red]">
-                                *This image will show as the main image of product
+                                *This image will be shown as the main image of product
                             </span>
                         </div>
                     @else
@@ -106,11 +106,11 @@
             </div>
         </div>
         <div class="flex flex-col items-center justify-center mt-[1rem] mb-[1rem]">
-            <button class="button-action w-1/4 rounded font-bold">
+            <a role="button" href="{{ route('admin.product.list') }}" class="button-action w-1/4 rounded font-bold text-center">
                 <span>
                     OK
                 </span>
-            </button>
+            </a>
         </div>
     </div>
 @endsection

@@ -3,9 +3,9 @@
 @section('content')
     <div class="flex flex-col product_list_admin">
         <div class="flex flex-row items-center justify-between mb-[1rem]">
-            <form class="flex flex-row items-center justify-between">
+            <form action="{{ route('admin.product.list') }}" method="GET" class="flex w-[35%] flex-row items-center justify-between">
 
-                <input type="text" class="input_auth_username mb-[0] mr-[8px]" placeholder="Title Product">
+                <input type="text" class="w-4/5 input_auth_username mb-[0] mr-[8px]" name="searchKey" placeholder="Title Product">
 
                 <button class="button-action rounded font-bold">
                     <span>
@@ -14,12 +14,12 @@
                 </button>
             </form>
 
-            <button class="w-[202px] button-action rounded font-bold">
+            <a role="button" href="{{ route('admin.product.add') }}" class="w-[202px] button-action rounded font-bold">
                 <i class="fa-solid fa-plus"></i>
                 <span>
                     Add New Product
                 </span>
-            </button>
+            </a>
         </div>
 
         <table class="mb-[1rem]">
@@ -68,7 +68,7 @@
                             <a role="button" href="{{ route('admin.product.detail', ['id' => $product->id]) }}" class="btn btn-info">
                                 Info
                             </a>
-                            <a role="button" href="" class="btn btn-edit">
+                            <a role="button" href="{{ route('admin.product.edit', ['id' => $product->id]) }}" class="btn btn-edit">
                                 Edit
                             </a>
                         </div>

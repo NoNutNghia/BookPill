@@ -30,16 +30,28 @@ class CartService
 
     public function getCartList(Request $request)
     {
-        if(!Auth::user()->cart) {
-            $result = $this->cartRepository->createCart(Auth::id());
+        if($request->ajax()) {
+            if(!Auth::user()->cart) {
+                $result = $this->cartRepository->createCart(Auth::id());
 
-            if(!$result) {
-                $cartResponse = new ResponseObject(Result::FAILURE, '', '');
+                if(!$result) {
+                    $cartResponse = new ResponseObject(Result::FAILURE, '', '');
+
+                    return response()->json($cartResponse->responseObject());
+                }
+
+                $data = $this->responseCartList([]);
+
+                $cartResponse = new ResponseObject(Result::SUCCESS, $data, '');
 
                 return response()->json($cartResponse->responseObject());
             }
 
-            $data = $this->responseCartList([]);
+            $productIDList = json_decode(Auth::user()->cart->product_id);
+
+            $foundProduct = $this->productRepository->getProductByIDList($productIDList);
+
+            $data = $this->responseCartList($foundProduct);
 
             $cartResponse = new ResponseObject(Result::SUCCESS, $data, '');
 
@@ -50,11 +62,7 @@ class CartService
 
         $foundProduct = $this->productRepository->getProductByIDList($productIDList);
 
-        $data = $this->responseCartList($foundProduct);
-
-        $cartResponse = new ResponseObject(Result::SUCCESS, $data, '');
-
-        return response()->json($cartResponse->responseObject());
+        return view('pages.profile.cart', compact('foundProduct'));
     }
 
     public function addProductToCart(Request $request)
@@ -71,7 +79,6 @@ class CartService
         }
 
         if (count($productList) > 0) {
-            $productList = collect($productList);
             $productList = json_encode($productList->push($idProduct));
         } else {
             $productList = json_encode(array($idProduct));
@@ -88,6 +95,26 @@ class CartService
 
     }
 
+    public function removeProductFromCart(Request $request)
+    {
+        $idProduct = $request->id_product;
+        $productList = collect(json_decode(Auth::user()->cart->product_id));
+
+        $listProductID = $productList->filter(function ($value, $key) use ($idProduct) {
+            return $value != $idProduct;
+        });
+
+        $result = $this->cartRepository->addProductToCart(json_encode($listProductID->toArray()), Auth::user()->cart->id);
+
+        if(!$result) {
+            $cartResponse = new ResponseObject(Result::FAILURE, '', '');
+            return $cartResponse->responseObject();
+        }
+
+        $cartResponse = new ResponseObject(Result::SUCCESS, $result, '');
+        return $cartResponse->responseObject();
+    }
+
     private function responseCartList($productList) {
         $data = '<div class="flex flex-col">';
         if(count($productList) > 0) {
@@ -101,7 +128,6 @@ class CartService
                     . '₫' . $product->price . '</span> </div>';
 
             }
-
             return $data .= '</div>';
         }
 

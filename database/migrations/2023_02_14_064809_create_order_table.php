@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCartTable extends Migration
+class CreateOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,23 @@ class CreateCartTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart', function (Blueprint $table) {
+        Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user');
-            $table->json('product_id');
+            $table->json('order_info');
+            $table->integer('price_order');
+            $table->tinyInteger('status_order');
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the 1migrations.
+     * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('cart');
+        Schema::dropIfExists('order');
     }
 }
