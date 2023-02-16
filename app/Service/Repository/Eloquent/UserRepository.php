@@ -58,4 +58,25 @@ class UserRepository implements UserRepositoryInterface
             return false;
         }
     }
+
+    public function getUserByID($id)
+    {
+        try {
+            return $this->user->where('id', $id)->first();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function changeStatusUser($id, $status)
+    {
+        try {
+            $this->user->where('id', $id)->update([
+                'status' => $status
+            ]);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

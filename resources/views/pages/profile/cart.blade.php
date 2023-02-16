@@ -5,7 +5,8 @@
         @if(count($foundProduct) > 0)
             <div class="flex flex-row justify-between items-center product_cart">
                 <div class="flex flex-row items-center justify-center w-[5%]">
-                    <input class="product_choice" type="checkbox">
+{{--                    <input class="product_choice" type="checkbox" onclick="checkAll(this)">--}}
+
                 </div>
                 <div class="flex flex-row w-[30%]">
                     Product
@@ -17,7 +18,7 @@
                 </div>
                 <div class="flex flex-row items-center w-[17%] justify-center">
                     <span>
-                        Quality
+                        Quantity
                     </span>
                 </div>
                 <div class="flex flex-row items-center w-[13%] justify-center">
@@ -35,7 +36,7 @@
             @foreach($foundProduct as $product)
                 <div class="flex flex-row justify-between items-center product_cart" id="{{ $product->id }}">
                     <div class="flex flex-row items-center justify-center w-[5%]">
-                        <input type="checkbox" class="product_choice" name="product_choice" value="{{ $product->id }}" id="">
+                        <input type="checkbox" class="product_choice" name="product_choice" value="{{ $product->id }}" onclick="getItem(this.value, this)">
                     </div>
                     <div class="flex flex-row w-[30%] items-center justify-between">
                         <img width="25%" class="image_border" style="aspect-ratio: 3/4" src="{{ asset('storage/product_image/' . $product->id . '/img1.jpg') }}" alt="">
@@ -47,21 +48,21 @@
                     </div>
                     <div class="flex flex-row items-center w-1/5 justify-center">
                         @if($product->discount == 0.0)
-                            <span class="price_product text-[1rem]">{{ $product->price }}</span>
+                            <span class="price_product text-[1rem]" id={{"priceProduct" . $product->id}}>{{ $product->price }}</span>
                         @else
                             <span class="price_old text-[1rem]">{{ $product->price }}</span>
                             @php( $priceAfterDiscount = $product->price -  ($product->price * $product->discount / 100) )
-                            <span class="price_product text-[1rem]">{{ $priceAfterDiscount }}</span>
+                            <span class="price_product text-[1rem]" id={{"priceProduct" . $product->id}}>{{ $priceAfterDiscount }}</span>
                         @endif
                     </div>
                     <div class="flex flex-row items-center w-[17%] justify-center">
-                        <button class="increase_btn">
+                        <button class="increase_btn disabled_button" onclick="decreaseQuantity(this)" disabled>
                             <span>
                                 -
                             </span>
                         </button>
-                        <input type="number" id={{ "qualityProduct" . $product->id }} class="input_number_product" value="1">
-                        <button class="decrease_btn" onclick="changeQuality()">
+                        <input type="number" id={{ "qualityProduct" . $product->id }} class="input_number_product" value="1" onchange="quantityNumberProduct(this)">
+                        <button class="decrease_btn" onclick="increaseQuantity(this)">
                             <span>
                                 +
                             </span>
@@ -69,9 +70,9 @@
                     </div>
                     <div class="flex flex-row items-center w-[13%] justify-center">
                         @if($product->discount != 0.0)
-                            <span class="price_product text-[1rem]">{{ $priceAfterDiscount }}</span>
+                            <span class="price_product text-[1rem]" id={{ "totalPrice" . $product->id }}>{{ $priceAfterDiscount }}</span>
                         @else
-                            <span class="price_product text-[1rem]">{{ $product->price }}</span>
+                            <span class="price_product text-[1rem]" id={{ "totalPrice" . $product->id }}>{{ $product->price }}</span>
                         @endif
                     </div>
                     <div class="flex flex-row items-center w-[10%] justify-center">
@@ -79,6 +80,7 @@
                     </div>
                 </div>
             @endforeach
+            @include('partial.checkout_cart')
         @else
             <img src="{{asset("storage/product_image/no-product-found-image.png")}}">
         @endif
@@ -86,12 +88,16 @@
 @endsection
 @section('script_account')
     <script type="text/javascript">
+
         function routeRemoveProductFromCart() {
             return "{{ route('account.remove_product') }}"
         }
+
         function imageNoProductFound() {
             return "{{ asset("storage/product_image/no-product-found-image.png") }}"
         }
+
     </script>
+
     <script src="{{ asset('assets/js/cart.js') }}"></script>
 @endsection

@@ -69,6 +69,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     });
     Route::prefix('/user')->name('user.')->group(function () {
         Route::get('/list', [AdminUserController::class, 'getUserList'])->name('list');
+        Route::get('/detail', [AdminUserController::class, 'getUserDetail'])->name('detail');
+        Route::post('/change', [AdminUserController::class, 'changeUserStatus'])->name('change_status');
     });
     Route::prefix('/statistical')->name('statistical.')->group(function () {
         Route::get('/main', [StatisticalController::class, 'getStatisticalProduct'])->name('main');

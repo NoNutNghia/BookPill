@@ -57,29 +57,31 @@
                         <td>
                             {{ $user->date_of_birth }}
                         </td>
-                        <td class="uppercase">
+                        <td class="uppercase" id="status_user">
                             {{ $user->statusUser->status_user }}
                         </td>
                         <td>
                             <div class="flex flex-col items-center justify-center">
-                                <button class="btn btn-info">
+                                <a role="button" href="{{ route('admin.user.detail', ['id' => $user->id]) }}" class="btn btn-info text-center">
                                     <span>
                                         Info
                                     </span>
-                                </button>
-                                @if($user->status == 1)
-                                    <button class="btn btn-danger">
-                                        <span>
-                                            Disable
-                                        </span>
-                                    </button>
-                                @else
-                                    <button class="btn btn-edit">
-                                        <span>
-                                            Active
-                                        </span>
-                                    </button>
-                                @endif
+                                </a>
+                                <div id="change_status_user" >
+                                    @if($user->status == 1)
+                                        <button class="btn btn-danger" onclick="changeStatusUser({{$user->id}}, 2)">
+                                            <span>
+                                                Disable
+                                            </span>
+                                        </button>
+                                    @else
+                                        <button class="btn btn-edit" onclick="changeStatusUser({{$user->id}}, 1)">
+                                            <span>
+                                                Active
+                                            </span>
+                                        </button>
+                                    @endif
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -88,4 +90,12 @@
 
         </table>
     </div>
+@endsection
+@section('script')
+    <script type="text/javascript">
+        function routeChangeStatusUser() {
+            return "{{ route('admin.user.change_status') }}"
+        }
+    </script>
+    <script src="{{ asset('assets/js/admin/user.js') }}"></script>
 @endsection

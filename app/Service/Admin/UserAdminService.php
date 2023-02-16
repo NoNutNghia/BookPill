@@ -2,6 +2,8 @@
 
 namespace App\Service\Admin;
 
+use App\Enum\Result;
+use App\ResponseObject\ResponseObject;
 use App\Service\Repository\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -27,6 +29,24 @@ class UserAdminService
 
         $userList = $this->userRepository->getListUser($key);
         return view('pages.admin.user.list', compact('userList'));
+    }
+
+    public function getUserDetail(Request $request)
+    {
+        $foundUser = $this->userRepository->getUserByID($request->id);
+        return view('pages.admin.user.detail', compact('foundUser'));
+    }
+
+    public function changeStatusUser(Request $request)
+    {
+        $result = $this->userRepository->changeStatusUser($request->id, $request->status);
+
+        if (!$result) {
+            $response = new ResponseObject(Result::FAILURE, '', '');
+            return response()->json($response->responseObject());
+        }
+        $response = new ResponseObject(Result::SUCCESS, '', '');
+        return response()->json($response->responseObject());
     }
 
 }

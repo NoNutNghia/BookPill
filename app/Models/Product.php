@@ -42,4 +42,9 @@ class Product extends Model
     {
         return $this->belongsTo(StatusProduct::class, 'status_product', 'id');
     }
+
+    public function commentProduct()
+    {
+        return $this->hasMany(Comment::class, 'id_product', 'id');
+    }
 }

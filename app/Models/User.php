@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'gender',
         'status'
     ];
 
@@ -52,5 +53,15 @@ class User extends Authenticatable
 
     public function statusUser() {
         return $this->belongsTo(Status::class, 'status', 'id');
+    }
+
+    public function genderUser()
+    {
+        return $this->belongsTo(Gender::class, 'gender', 'id');
+    }
+
+    public function commentUser()
+    {
+        return $this->hasMany(Comment::class, 'id_user', 'id');
     }
 }

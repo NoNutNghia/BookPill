@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'full_name' => 'Nguyen Ngoc Nghia',
             'username' => 'nghiann',
             'phone_number' => '0964343115',
-            'date_of_birth' => '27/07/2001',
+            'date_of_birth' => Carbon::parse('26-07-2001')->format('Y-m-d'),
             'email' => 'nghiann@zyyx.jp',
             'password' => sha1('admin'),
             'gender' => 1,

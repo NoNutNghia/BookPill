@@ -11,4 +11,8 @@ interface UserRepositoryInterface
     public function getExistForgetUrlUser($forgetUrl);
 
     public function getListUser($searchKey);
+
+    public function getUserByID($id);
+
+    public function changeStatusUser($id, $status);
 }
