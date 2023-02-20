@@ -15,9 +15,9 @@
             Statistical Product
         </span>
     </a>
-    <a href="">
+    <a href="{{ route('admin.order.list') }}" class="{{ str_contains($currentUrl, 'order') ? 'active_tab' : '' }}">
         <span>
-            Cart Management
+            Order Management
         </span>
     </a>
 </div>

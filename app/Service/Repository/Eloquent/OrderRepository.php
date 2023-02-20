@@ -49,4 +49,65 @@ class OrderRepository implements OrderRepositoryInterface
             return false;
         }
     }
+
+    public function getOrderList($searchKey)
+    {
+        try {
+            if($searchKey == '%%') {
+                return $this->order->orderBy('status_order')->orderBy('created_at', 'DESC')->paginate(10);
+            }
+            return $this->order->join('users', 'users.id' , '=', 'order.id_user')
+                ->where('users.username', 'LIKE', $searchKey)
+                ->orderBy('order.status_order')->orderBy('order.created_at', 'DESC')->paginate(10);
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getOrderByID($idOrder)
+    {
+        try {
+            return $this->order->where('id', $idOrder)->first();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function updateStatusOrder($idOrder, $statusOrder)
+    {
+        try {
+            $this->order->where('id', $idOrder)->update(array(
+                 'status_order' => $statusOrder
+            ));
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getPurchaserUser($idUser)
+    {
+        try {
+            return $this->order->where(function ($query) use ($idUser) {
+                $query->where('id_user', $idUser)
+                    ->where('status_order', '<>' ,1);
+            })->orderBy('updated_at', 'DESC')->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function updateOrder($idOrder, $orderInfo)
+    {
+        try {
+            $this->order->where('id', $idOrder)->update(array(
+                'order_info' => $orderInfo
+            ));
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

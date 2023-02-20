@@ -10,5 +10,7 @@
     "/assets/js/detail.js": "/assets/js/detail.js",
     "/assets/js/header.js": "/assets/js/header.js",
     "/assets/js/main.js": "/assets/js/main.js",
-    "/assets/js/order.js": "/assets/js/order.js"
+    "/assets/js/order.js": "/assets/js/order.js",
+    "/assets/js/admin/orderAdmin.js": "/assets/js/admin/orderAdmin.js",
+    "/assets/js/purchaser.js": "/assets/js/purchaser.js"
 }

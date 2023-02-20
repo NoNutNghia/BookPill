@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Service\Repository\CartRepositoryInterface;
+use App\Service\Repository\CommentRepositoryInterface;
 use App\Service\Repository\Eloquent\CartRepository;
+use App\Service\Repository\Eloquent\CommentRepository;
 use App\Service\Repository\Eloquent\GenreRepository;
 use App\Service\Repository\Eloquent\OrderRepository;
 use App\Service\Repository\Eloquent\ProductRepository;
@@ -38,6 +40,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->singleton(OrderRepositoryInterface::class, function () {
             return new OrderRepository();
+        });
+        $this->app->singleton(CommentRepositoryInterface::class, function () {
+            return new CommentRepository();
         });
     }
 

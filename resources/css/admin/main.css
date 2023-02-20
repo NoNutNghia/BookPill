@@ -54,3 +54,12 @@ table tbody td
     @apply bg-red-700;
 }
 
+.btn-back {
+    @apply bg-gray-500
+}
+
+.btn-back:hover {
+    @apply bg-gray-700
+}
+
+

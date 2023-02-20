@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\StatisticalController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaserController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +53,8 @@ Route::middleware('user')->group(function () {
         Route::get('/order', [OrderController::class, 'getOrder'])->name('order');
         Route::post('/order/tmp', [OrderController::class, 'createOrderTmp'])->name('creat_order_tmp');
         Route::post('/order/create', [OrderController::class, 'createOrder'])->name('create_order');
-        Route::get('purchase')->name('purchase');
+        Route::get('/purchaser', [PurchaserController::class, 'getPurchaser'])->name('purchaser');
+        Route::post('/comment/add', [CommentController::class, 'addCommentProduct'])->name('add_comment');
     });
 });
 
@@ -77,5 +81,10 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     });
     Route::prefix('/statistical')->name('statistical.')->group(function () {
         Route::get('/main', [StatisticalController::class, 'getStatisticalProduct'])->name('main');
+    });
+    Route::prefix('/order')->name('order.')->group(function () {
+        Route::get('/list', [AdminOrderController::class, 'getOrderList'])->name('list');
+        Route::get('/detail', [AdminOrderController::class, 'getOrderDetail'])->name('detail');
+        Route::post('/handle', [AdminOrderController::class, 'handleOrder'])->name('handle');
     });
 });
