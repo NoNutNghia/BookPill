@@ -7,7 +7,6 @@ use App\ResponseObject\ResponseObject;
 use App\Service\Repository\CartRepositoryInterface;
 use App\Service\Repository\ProductRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 class CartService

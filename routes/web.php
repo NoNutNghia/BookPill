@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\StatisticalController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,9 @@ Route::middleware('user')->group(function () {
         Route::get('/cart', [CartController::class, 'getCartList'])->name('cart');
         Route::post('/cart', [CartController::class, 'addProductToCart'])->name('add_cart');
         Route::post('/cart/remove', [CartController::class, 'removeProductFromCart'])->name('remove_product');
-        Route::get('order')->name('order');
+        Route::get('/order', [OrderController::class, 'getOrder'])->name('order');
+        Route::post('/order/tmp', [OrderController::class, 'createOrderTmp'])->name('creat_order_tmp');
+        Route::post('/order/create', [OrderController::class, 'createOrder'])->name('create_order');
         Route::get('purchase')->name('purchase');
     });
 });

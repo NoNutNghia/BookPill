@@ -75,4 +75,13 @@ class ProductRepository implements ProductRepositoryInterface
             return false;
         }
     }
+
+    public function getTitleProductByID($idProduct)
+    {
+        try {
+            return $this->product->select('title')->where('id', $idProduct)->first();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

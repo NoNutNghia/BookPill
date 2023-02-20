@@ -146,5 +146,9 @@ input[type='checkbox'] {
     background-image: linear-gradient(to right, #566FEF, #53A4E4);
 }
 
+.error_input {
+    border: 1px red solid;
+}
+
 
 

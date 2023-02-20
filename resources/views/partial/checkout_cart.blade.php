@@ -18,12 +18,24 @@
             </div>
         </div>
 
-        <button class="button-action rounded w-[49%] font-bold ">
-        <span>
-            Check out
-        </span>
+        <button class="disabled_button button-action rounded w-[49%] font-bold " id="check_out" disabled>
+            <span>
+                Check out
+            </span>
         </button>
     </div>
-
-
 </div>
+
+<script type="text/javascript">
+    function getUserID() {
+        return "{{ \Illuminate\Support\Facades\Auth::id() }}"
+    }
+
+    function routeOrderTmp() {
+        return '{{ route("account.creat_order_tmp") }}'
+    }
+
+    function getUserPhoneNumber() {
+        return "{{ \Illuminate\Support\Facades\Auth::user()->phone_number }}"
+    }
+</script>

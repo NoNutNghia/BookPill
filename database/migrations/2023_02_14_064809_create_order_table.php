@@ -19,6 +19,7 @@ class CreateOrderTable extends Migration
             $table->json('order_info');
             $table->integer('price_order');
             $table->tinyInteger('status_order');
+            $table->string('address');
             $table->timestamps();
         });
     }

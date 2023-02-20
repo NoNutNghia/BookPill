@@ -5,7 +5,6 @@
         @if(count($foundProduct) > 0)
             <div class="flex flex-row justify-between items-center product_cart">
                 <div class="flex flex-row items-center justify-center w-[5%]">
-{{--                    <input class="product_choice" type="checkbox" onclick="checkAll(this)">--}}
 
                 </div>
                 <div class="flex flex-row w-[30%]">
@@ -61,7 +60,7 @@
                                 -
                             </span>
                         </button>
-                        <input type="number" id={{ "qualityProduct" . $product->id }} class="input_number_product" value="1" onchange="quantityNumberProduct(this)">
+                        <input type="number" id={{ "quantityProduct" . $product->id }} class="input_number_product" value="1" onchange="quantityNumberProduct(this)">
                         <button class="decrease_btn" onclick="increaseQuantity(this)">
                             <span>
                                 +

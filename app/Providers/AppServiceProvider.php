@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Service\Repository\CartRepositoryInterface;
 use App\Service\Repository\Eloquent\CartRepository;
 use App\Service\Repository\Eloquent\GenreRepository;
+use App\Service\Repository\Eloquent\OrderRepository;
 use App\Service\Repository\Eloquent\ProductRepository;
 use App\Service\Repository\Eloquent\UserRepository;
 use App\Service\Repository\GenreRepositoryInterface;
+use App\Service\Repository\OrderRepositoryInterface;
 use App\Service\Repository\ProductRepositoryInterface;
 use App\Service\Repository\UserRepositoryInterface;
 use Illuminate\Pagination\Paginator;
@@ -33,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->singleton(CartRepositoryInterface::class, function () {
             return new CartRepository();
+        });
+        $this->app->singleton(OrderRepositoryInterface::class, function () {
+            return new OrderRepository();
         });
     }
 

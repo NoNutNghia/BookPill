@@ -50,4 +50,21 @@ class CartRepository implements CartRepositoryInterface
             return false;
         }
     }
+
+    public function updateCart($idUser, $idProduct, $idCart)
+    {
+        try {
+            $this->cart->where(function ($query) use ($idCart, $idUser) {
+                $query->where('id_user', $idUser)
+                    ->where('id', $idCart);
+            })->update(array(
+                'product_id' => $idProduct
+            ));
+
+            return true;
+
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

@@ -31,7 +31,7 @@
                 My Cart
             </span>
         </a>
-        <a href="" class="flex flex-row items-center">
+        <a href="{{ route('account.order') }}" class=" {{ str_contains($routeProfile, 'order') ? 'active_choice_tab_profile' : '' }} flex flex-row items-center">
             <i class="text-[#566FEF] w-1/5 fa-solid fa-money-bill"></i>
             <span class="text-link-switch font-bold text-[#566FEF]">
                 My Order

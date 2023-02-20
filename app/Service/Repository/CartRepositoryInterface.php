@@ -9,4 +9,6 @@ interface CartRepositoryInterface
     public function addProductToCart($idProduct, $idCart);
 
     public function createCart($idUser);
+
+    public function updateCart($idUser, $idProduct, $idCart);
 }
