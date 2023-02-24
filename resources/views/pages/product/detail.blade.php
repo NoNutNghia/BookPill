@@ -24,9 +24,15 @@
                     </span>
                         <div class="flex flex-row gap-[2px]">
                             @foreach(range(1,5) as $j)
-                                <span class="fa-stack" style="width:1em">
-                            <i class="text-[#566FEF] fas fa-star fa-stack-1x"></i>
-                        </span>
+                                @if($j <= $product->rating)
+                                    <span class="fa-stack" style="width:1em">
+                                        <i class="text-[#566FEF] fas fa-star fa-stack-1x"></i>
+                                    </span>
+                                @else
+                                    <span class="fa-stack" style="width:1em">
+                                        <i class="text-[#566FEF] far fa-star fa-stack-1x"></i>
+                                    </span>
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -34,7 +40,7 @@
                     </div>
                     <div class="flex flex-row items-center gap-[4px]">
                     <span class="underline">
-                        0
+                        {{ count($product->commentProduct) }}
                     </span>
                         <span class="label_content_profile">
                         Ratings
@@ -86,8 +92,8 @@
                             </span>
                             </div>
                             <span class="text-[#566FEF]">
-                            ₫30000
-                        </span>
+                                ₫30000
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -126,36 +132,55 @@
                 <div class="flex flex-row button_action_product gap-[1rem]">
                     <button value="{{ $product->id }}"
                             class="flex flex-row items-center add_to_cart gap-[4px]"
-                            {{ \Illuminate\Support\Facades\Auth::check() ? '' : 'disabled' }}
                     >
                         <i class="fa-solid fa-cart-plus"></i>
                         <span>Add To Cart</span>
                     </button>
-                    <button class="flex flex-row items-center buy_product_now">
-                        <span>Buy Now</span>
-                    </button>
+{{--                    <button class="flex flex-row items-center buy_product_now">--}}
+{{--                        <span>Buy Now</span>--}}
+{{--                    </button>--}}
                 </div>
             </div>
         </div>
         <div class="flex flex-row justify-between w-full">
-            <div class="flex flex-col comment_product w-[80%]">
-                <span class="title_comment_product">
-                    Product Ratings
-                </span>
-                <div class="rating_product_comment">
-
+            <div class="flex flex-col comment_product gap-[0.5rem] w-[80%]">
+                <div class="flex flex-row items-center justify-between">
+                    <span class="title_comment_product">
+                        Product Ratings
+                    </span>
+                    @if(count($product->commentProduct) > 3)
+                        <div class="flex flex-row items-center">
+                            @foreach(range(5,1) as $i)
+                                <div onclick="chooseRating(this)" value="{{$i}}" class="flex flex-row justify-between pr-[12px] pl-[12px] rating items-center gap-[6px]">
+                                    @foreach(range(1,5) as $j)
+                                        <span class="fa-stack" style="width:1em">
+                                            <i class="far fa-star fa-stack-1x"></i>
+                                            @if($i >= $j)
+                                                <i class="fas fa-star fa-stack-1x"></i>
+                                            @else
+                                                <i class="far fa-star fa-stack-1x"></i>
+                                            @endif
+                                    </span>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+                <hr>
+                <div class="flex flex-col rating_product_comment">
+                    @include('partial.comment', ['commentList' => $product->commentProduct])
                 </div>
             </div>
             <div class="flex flex-col gap-[3px] related_product w-[18%]">
-                <div class="related_product_card">
-
-                </div>
-                <div class="related_product_card">
-
-                </div>
-                <div class="related_product_card">
-
-                </div>
+                @foreach($relatedProduct as $relate)
+                    <a href="{{ route('product.detail', ['id' => $relate->id]) }}" class="flex flex-col related_product_card gap-[8px]">
+                        <img src="{{ asset('storage/product_image/' . $relate->id . '/img1.jpg') }}" alt="">
+                        <span>
+                            {{ $relate->title }}
+                        </span>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
@@ -164,8 +189,21 @@
 
 @section('script')
     <script type="text/javascript">
+
         function routeAddProductToCart() {
             return '{{ route('account.cart') }}'
+        }
+
+        function routeGetComment() {
+            return '{{ route('product.get_comment') }}'
+        }
+
+        function productID() {
+            return '{{$product->id}}'
+        }
+
+        function checkLogin() {
+            return '{{ \Illuminate\Support\Facades\Auth::check() }}'
         }
     </script>
     <script src="{{ asset('assets/js/detail.js') }}"></script>

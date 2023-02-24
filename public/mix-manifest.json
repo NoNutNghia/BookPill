@@ -12,5 +12,6 @@
     "/assets/js/main.js": "/assets/js/main.js",
     "/assets/js/order.js": "/assets/js/order.js",
     "/assets/js/admin/orderAdmin.js": "/assets/js/admin/orderAdmin.js",
-    "/assets/js/purchaser.js": "/assets/js/purchaser.js"
+    "/assets/js/purchaser.js": "/assets/js/purchaser.js",
+    "/assets/js/admin/product.js": "/assets/js/admin/product.js"
 }

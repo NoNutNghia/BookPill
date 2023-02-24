@@ -1,7 +1,7 @@
 @extends('layout.admin.master')
 
 @section('content')
-    <form action="{{ route('admin.product.post_edit') }}" method="POST" class="flex flex-col p-[1.5rem]">
+    <form action="{{ route('admin.product.post_add') }}" enctype="multipart/form-data" method="POST" class="flex flex-col p-[1.5rem]">
         @csrf
         <div class="flex label_content_product flex-row items-center">
             <span class="w-1/5 font-bold">
@@ -114,20 +114,17 @@
                 Image
             </span>
             <div class="flex w-4/5 gap-[0.5rem] flex-col">
-{{--                @foreach($imageList as $image)--}}
-{{--                    @if($loop->first)--}}
-{{--                        <div class="flex flex-row justify-between">--}}
-{{--                            <img class="image_border w-1/2" src="{{ asset('storage/product_image/' . $foundProduct->id . '/' . $image) }}" alt="">--}}
-{{--                            <span class="w-[49%] text-[red]">--}}
-{{--                                *This image will show as the main image of product--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    @else--}}
-{{--                        <div class="flex flex-row">--}}
-{{--                            <img class="image_border w-1/2" src="{{ asset('storage/product_image/' . $foundProduct->id . '/' . $image) }}" alt="">--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-{{--                @endforeach--}}
+                <div id="imageArea" class="flex flex-col gap-[0.5rem]">
+                </div>
+                @if($errors->has('not_product_image'))
+                    <span class="error_message text-[red]">
+                        {{ $errors->first('not_product_image') }}
+                    </span>
+                @endif
+
+                <input type="file" style="display: none" accept="image/jpeg" name="imageUpload[]" id="inputFile">
+                <label for="inputFile" class="custom-file-input custom-file-input-add"></label>
+
             </div>
         </div>
         <div class="flex flex-col items-center justify-center gap-[1rem] mt-[1rem] mb-[1rem]">
@@ -144,4 +141,8 @@
             </a>
         </div>
     </form>
+@endsection
+
+@section('script')
+    <script src="{{ asset('assets/js/admin/product.js') }}"></script>
 @endsection

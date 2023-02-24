@@ -8,7 +8,7 @@
             <span class="auth-header-text mb-[3rem]">
                 Register
             </span>
-            <input type="text" class="input_auth_username" placeholder="Email">
+            <input type="text" class="input_auth_username" name="email" placeholder="Email">
             <button class="button-action mb-[1.5rem]">
                 <span>
                     Register

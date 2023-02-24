@@ -43,14 +43,32 @@ class ProductService
 
         $imageList = $this->getImageFile($request->id);
 
-        $foundProduct->genre = json_decode($foundProduct->genre);
+        $genre = json_decode($foundProduct->genre);
 
-        $genreList = $this->genreRepository->getGenreByProduct($foundProduct->genre);
+        $genreList = $this->genreRepository->getGenreByProduct($genre);
+
+        $genreProduct = '';
+
+        if ( count($genre) > 0) {
+//            foreach ($genre as $ele) {
+                $genreProduct .= '%"' . $genre[0] . '"%';
+//            }
+        } else {
+            $genreProduct .= '%%';
+        }
+
+        $relatedProduct = $this->productRepository->getRelatedProduct(
+            $genreProduct,
+            $foundProduct->age,
+            $foundProduct->author,
+            $foundProduct->id
+        );
 
         return view('pages.product.detail')->with(array(
             'product' => $foundProduct,
             'imageProduct' => $imageList,
-            'genreList' => $genreList
+            'genreList' => $genreList,
+            'relatedProduct' => $relatedProduct
         ));
     }
 
@@ -147,4 +165,5 @@ class ProductService
 
         return $dataResponse;
     }
+
 }

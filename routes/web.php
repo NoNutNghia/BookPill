@@ -63,6 +63,7 @@ Route::prefix('/product')->name('product.')->group(function () {
     Route::get('/detail', [ProductController::class, 'getProductDetail'])->name('detail');
     Route::post('/filter', [ProductController::class, 'getProductFilter'])->name('filter');
     Route::post('/title', [ProductController::class, 'getProductTitle'])->name('title');
+    Route::post('/comment/get', [CommentController::class, 'getCommentProduct'])->name('get_comment');
 });
 
 Route::prefix('/admin')->name('admin.')->group(function () {
@@ -81,6 +82,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     });
     Route::prefix('/statistical')->name('statistical.')->group(function () {
         Route::get('/main', [StatisticalController::class, 'getStatisticalProduct'])->name('main');
+        Route::post('calculate', [StatisticalController::class, 'calculateStatisticalProduct'])->name('calculate');
     });
     Route::prefix('/order')->name('order.')->group(function () {
         Route::get('/list', [AdminOrderController::class, 'getOrderList'])->name('list');

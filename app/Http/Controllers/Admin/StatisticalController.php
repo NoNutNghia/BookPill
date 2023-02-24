@@ -23,4 +23,9 @@ class StatisticalController extends Controller
         return $this->statisticalAdminService->statisticalProduct($request);
     }
 
+    public function calculateStatisticalProduct(Request $request)
+    {
+        return $this->statisticalAdminService->calculateStatisticalProduct($request);
+    }
+
 }

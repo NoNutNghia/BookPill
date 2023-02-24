@@ -2,6 +2,8 @@
 
 namespace App\Service\Repository;
 
+use http\Env\Request;
+
 interface OrderRepositoryInterface
 {
     public function getOrderByIDUser($idUser);
@@ -16,4 +18,6 @@ interface OrderRepositoryInterface
     public function getPurchaserUser($idUser);
 
     public function updateOrder($idOrder, $orderInfo);
+
+    public function statisticalProduct($month, $year);
 }

@@ -641,16 +641,22 @@ input[type='checkbox'] {
     background-color: white;
     box-shadow: 0px 1px 2px 0px rgb(0 0 0 / 75%);
     width: 100%;
-    height: 500px;
     padding: 32px;
+    height: auto;
+    max-height: 400px;
+    min-height: 400px;
 }
 
 .related_product_card {
     background-color: white;
     box-shadow: 0px 1px 2px 0px rgb(0 0 0 / 75%);
     width: 100%;
-    height: 300px;
+    height: 320px;
     padding: 12px;
+}
+
+.related_product_card img {
+    aspect-ratio: 1/1;
 }
 
 .title_comment_product {
@@ -660,8 +666,8 @@ input[type='checkbox'] {
 
 .rating_product_comment {
     width: 100%;
-    height: 200px;
-    background: red;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .product_cart {
@@ -864,6 +870,45 @@ table tbody td
 
 .image_border {
     border: 1px solid #566FEF;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input {
+    width: 156px;
+}
+
+.custom-file-input::before {
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-block;
+    -webkit-user-select: none;
+    color: white;
+    background-image: linear-gradient(to bottom, #566FEF, #53A4E4);
+    text-transform: uppercase;
+    padding: 12px;
+    height: 50px;
+}
+
+.custom-file-input:hover::before {
+    color: white !important;
+    text-decoration: none !important;
+    background-image: linear-gradient(to bottom, #566FEF, #53A4E4);
+    opacity: 0.8;
+}
+
+.custom-file-input-add:before {
+    content: 'Upload image';
+}
+
+.custom-file-input-edit:before {
+    content: 'Change image';
 }
 
 
@@ -1549,6 +1594,9 @@ video {
 .h-\[100\%\] {
   height: 100%;
 }
+.h-full {
+  height: 100%;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1665,6 +1713,15 @@ video {
 }
 .w-\[28\%\] {
   width: 28%;
+}
+.w-\[4\%\] {
+  width: 4%;
+}
+.w-\[3\%\] {
+  width: 3%;
+}
+.w-\[95\%\] {
+  width: 95%;
 }
 .max-w-6xl {
   max-width: 72rem;
@@ -1856,6 +1913,9 @@ video {
 }
 .text-center {
   text-align: center;
+}
+.text-right {
+  text-align: right;
 }
 .text-sm {
   font-size: 0.875rem;

@@ -17,4 +17,16 @@ interface ProductRepositoryInterface
 
 
     public function getProductByIDList($idProductList);
+
+    public function getRelatedProduct($genre, $ageRange, $author, $id);
+
+    public function createProduct($title, $genre, $ageRange, $numberOfProduct, $discount, $status, $delivery, $author, $price);
+
+    public function getLastIDProduct();
+
+    public function updateNumberProduct($number, $id);
+
+    public function updateRatingProduct($id, $rating);
+
+    public function updateProduct($id, $title, $genre, $ageRange, $numberOfProduct, $discount, $status, $delivery, $author, $price);
 }

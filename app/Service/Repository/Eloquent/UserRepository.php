@@ -79,4 +79,16 @@ class UserRepository implements UserRepositoryInterface
             return false;
         }
     }
+
+    public function createUserTmp($email, $registerUrl)
+    {
+        try {
+            return $this->user->create(array(
+                'email' => $email,
+                'register_url' => $registerUrl
+            ));
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

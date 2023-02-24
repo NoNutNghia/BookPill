@@ -35,7 +35,9 @@
             @foreach($foundProduct as $product)
                 <div class="flex flex-row justify-between items-center product_cart" id="{{ $product->id }}">
                     <div class="flex flex-row items-center justify-center w-[5%]">
-                        <input type="checkbox" class="product_choice" name="product_choice" value="{{ $product->id }}" onclick="getItem(this.value, this)">
+                        @if($product->status_product == 1)
+                            <input type="checkbox" class="product_choice" name="product_choice" value="{{ $product->id }}" onclick="getItem(this.value, this)">
+                        @endif
                     </div>
                     <div class="flex flex-row w-[30%] items-center justify-between">
                         <img width="25%" class="image_border" style="aspect-ratio: 3/4" src="{{ asset('storage/product_image/' . $product->id . '/img1.jpg') }}" alt="">
@@ -46,26 +48,30 @@
                         </div>
                     </div>
                     <div class="flex flex-row items-center w-1/5 justify-center">
-                        @if($product->discount == 0.0)
-                            <span class="price_product text-[1rem]" id={{"priceProduct" . $product->id}}>{{ $product->price }}</span>
-                        @else
-                            <span class="price_old text-[1rem]">{{ $product->price }}</span>
-                            @php( $priceAfterDiscount = $product->price -  ($product->price * $product->discount / 100) )
-                            <span class="price_product text-[1rem]" id={{"priceProduct" . $product->id}}>{{ $priceAfterDiscount }}</span>
+                        @php( $priceAfterDiscount = $product->price -  ($product->price * $product->discount / 100) )
+                        @if($product->status_product == 1)
+                            @if($product->discount == 0.0)
+                                <span class="price_product text-[1rem]" id={{"priceProduct" . $product->id}}>{{ $product->price }}</span>
+                            @else
+                                <span class="price_old text-[1rem]">{{ $product->price }}</span>
+                                <span class="price_product text-[1rem]" id={{"priceProduct" . $product->id}}>{{ $priceAfterDiscount }}</span>
+                            @endif
                         @endif
                     </div>
                     <div class="flex flex-row items-center w-[17%] justify-center">
-                        <button class="increase_btn disabled_button" onclick="decreaseQuantity(this)" disabled>
-                            <span>
-                                -
-                            </span>
-                        </button>
-                        <input type="number" id={{ "quantityProduct" . $product->id }} class="input_number_product" value="1" onchange="quantityNumberProduct(this)">
-                        <button class="decrease_btn" onclick="increaseQuantity(this)">
-                            <span>
-                                +
-                            </span>
-                        </button>
+                        @if($product->status_product == 1)
+                            <button class="increase_btn disabled_button" onclick="decreaseQuantity(this)" disabled>
+                                <span>
+                                    -
+                                </span>
+                            </button>
+                            <input type="number" id={{ "quantityProduct" . $product->id }} class="input_number_product" value="1" onchange="quantityNumberProduct(this)">
+                            <button class="decrease_btn" onclick="increaseQuantity(this)">
+                                <span>
+                                    +
+                                </span>
+                            </button>
+                        @endif
                     </div>
                     <div class="flex flex-row items-center w-[13%] justify-center">
                         @if($product->discount != 0.0)

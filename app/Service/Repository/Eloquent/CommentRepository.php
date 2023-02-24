@@ -18,9 +18,16 @@ class CommentRepository implements CommentRepositoryInterface
     }
 
 
-    public function getCommentProduct()
+    public function getCommentProduct($rating, $id)
     {
-        // TODO: Implement getCommentProduct() method.
+        try {
+            return $this->comment->where(function ($query) use ($id, $rating) {
+                $query->where('id_product', $id)
+                    ->where('rating', $rating);
+            })->orderBy('created_at', 'DESC')->get();
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     public function addCommentProduct($idUser, $idProduct, $comment, $rating)

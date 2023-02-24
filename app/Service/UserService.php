@@ -2,10 +2,14 @@
 
 namespace App\Service;
 
+use App\Mail\RegisterOrder;
 use App\Service\Repository\UserRepositoryInterface;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class UserService
 {
@@ -68,13 +72,43 @@ class UserService
 
     public function verifyEmail(Request $request)
     {
+        do {
+            $randomString = $this->genNumString();
+        } while ($this->userRepository->getExistForgetUrlUser($randomString) !== null);
+
+        $randomString = sha1(Carbon::now()->toString() . $randomString);
+
+        $userTmp = $this->userRepository->createUserTmp($request->email, $randomString);
+
+        if (!$userTmp) {
+            return false;
+        }
+
+        Mail::queue(new RegisterOrder($userTmp));
+
+        if(Mail::failures()) {
+            return false;
+        }
+
         return view('pages.auth.mail_verification')->with(array(
-            'mailaddress' => Session::get('mail_address')
+            'mailaddress' => $request->email
         ));
     }
 
     public function resetPasswordIndex(Request $request)
     {
         return view('pages.auth.reset_password');
+    }
+
+    private function genNumString(): string
+    {
+        $stringNum = '0123456789';
+        $lengthStringNum = Str::length($stringNum);
+        $randomNumString = '';
+        for ($i = 0; $i < 8; $i++) {
+            $randomNumString .= $stringNum[rand(0, $lengthStringNum - 1)];
+        }
+
+        return $randomNumString;
     }
 }

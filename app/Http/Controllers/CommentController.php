@@ -22,4 +22,9 @@ class CommentController extends Controller
         return $this->commentService->addCommentProduct($request);
     }
 
+    public function getCommentProduct(Request $request)
+    {
+        return $this->commentService->getCommentProduct($request);
+    }
+
 }

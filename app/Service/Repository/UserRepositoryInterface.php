@@ -15,4 +15,6 @@ interface UserRepositoryInterface
     public function getUserByID($id);
 
     public function changeStatusUser($id, $status);
+
+    public function createUserTmp($email, $registerUrl);
 }

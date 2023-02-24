@@ -5,6 +5,7 @@ namespace App\Service\Repository\Eloquent;
 use App\Models\Order;
 use App\Service\Repository\OrderRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class OrderRepository implements OrderRepositoryInterface
 {
@@ -106,6 +107,19 @@ class OrderRepository implements OrderRepositoryInterface
             ));
 
             return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function statisticalProduct($month, $year)
+    {
+        try {
+            DB::statement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+            return DB::select('
+                SELECT SUM(price_order) as price, DAY(updated_at) as statistical_day FROM `order`
+                WHERE MONTH(updated_at) = ' . $month .  ' AND YEAR(updated_at) = ' . $year . '
+                GROUP BY cast(updated_at as date)');
         } catch (\Exception $e) {
             return false;
         }

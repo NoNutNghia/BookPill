@@ -4,6 +4,9 @@ namespace App\Service\Repository\Eloquent;
 
 use App\Models\Product;
 use App\Service\Repository\ProductRepositoryInterface;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ProductRepository implements ProductRepositoryInterface
@@ -20,7 +23,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function getProductList($searchKey = '')
     {
         try {
-            return $this->product->orderBy('title')->get();
+            return $this->product->where('status_product', 1)->orderBy('title')->get();
         } catch (\Exception $e) {
             return false;
         }
@@ -70,7 +73,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function getProductAdminList($searchKey = '')
     {
         try {
-            return $this->product->where('title', 'LIKE', $searchKey)->orderBy('title')->paginate(5);
+            return $this->product->where('title', 'LIKE', $searchKey)->orderBy('updated_at', 'DESC')->paginate(5);
         } catch (\Exception $e) {
             return false;
         }
@@ -80,6 +83,102 @@ class ProductRepository implements ProductRepositoryInterface
     {
         try {
             return $this->product->select('title')->where('id', $idProduct)->first();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getRelatedProduct($genre, $ageRange, $author, $id)
+    {
+        try {
+            return $this->product->where(function ($query) use ($genre, $ageRange, $author, $id){
+                $query->where('id', '<>', $id)
+                    ->where('genre', 'LIKE', $genre);
+//                    ->orWhere('author', $author)
+//                    ->orWhere('age', $ageRange);
+            })->take(3)->orderBy('rating', 'DESC')->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function createProduct($title, $genre, $ageRange, $numberOfProduct, $discount, $status, $delivery, $author, $price)
+    {
+        try {
+            return $this->product->insert(array(
+                array(
+                    'title' => $title,
+                    'author' => $author,
+                    'delivery' => $delivery,
+                    'price' => $price,
+                    'discount' => $discount,
+                    'status_product' => $status,
+                    'genre' => $genre,
+                    'age' => $ageRange,
+                    'rating' => 0.0,
+                    'sold' => 0,
+                    'number_of_product' => $numberOfProduct,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                )
+            ));
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getLastIDProduct() {
+        try {
+            return $this->product->orderBy('id', 'DESC')->first();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function updateProduct($id, $title, $genre, $ageRange, $numberOfProduct, $discount, $status, $delivery, $author, $price)
+    {
+        try {
+            $this->product->where('id', $id)->update(array(
+                'title' => $title,
+                'author' => $author,
+                'delivery' => $delivery,
+                'price' => $price,
+                'discount' => $discount,
+                'status_product' => $status,
+                'genre' => $genre,
+                'age' => $ageRange,
+                'number_of_product' => $numberOfProduct,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ));
+
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function updateNumberProduct($number, $id)
+    {
+        try {
+             $this->product->where('id', $id)
+                 ->update(array(
+                     'sold' => DB::raw('sold + ' . $number),
+                     'number_of_product' => DB::raw('number_of_product - ' . $number)
+                 ));
+             return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function updateRatingProduct($id, $rating)
+    {
+        try {
+            $this->product->where('id', $id)->update(array(
+                'rating' => $rating
+            ));
+            return true;
         } catch (\Exception $e) {
             return false;
         }

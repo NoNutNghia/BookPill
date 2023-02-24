@@ -3,6 +3,7 @@
 @section('content')
     <form action="{{ route('admin.product.post_edit') }}" method="POST" class="flex flex-col p-[1.5rem]">
         @csrf
+        <input type="text" hidden name="product_id" value="{{ $foundProduct->id }}">
         <div class="flex label_content_product flex-row items-center">
             <span class="w-1/5 font-bold">
                 Title
@@ -119,33 +120,27 @@
                 Image
             </span>
             <div class="flex w-4/5 gap-[0.5rem] flex-col">
-                @foreach($imageList as $image)
+                @foreach($imageList as $index=>$image)
                     @if($loop->first)
                         <div class="flex flex-row justify-between">
-                            <img class="image_border w-1/2" src="{{ asset('storage/product_image/' . $foundProduct->id . '/' . $image) }}" alt="">
+                            <img class="image_border w-1/2" id="img{{$index + 1}}" src="{{ asset('storage/product_image/' . $foundProduct->id . '/' . $image) }}" alt="">
                             <div class="flex flex-col w-[49%] gap-[1rem]">
                                 <span class="text-[red]">
                                     *This image will show as the main image of product
                                 </span>
-                                <button class="button-action w-1/2 rounded font-bold">
-                                    <i class="fa-solid fa-image"></i>
-                                    <span class="uppercase">
-                                        Change image
-                                    </span>
-                                </button>
+                                <input type="file" style="display: none" accept="image/jpeg" id="input{{$index + 1}}" onchange="uploadImage({{$index + 1}}, this)" name="imageUpload[]" >
+                                <label for="input{{$index + 1}}" class="custom-file-input custom-file-input-edit"></label>
+                                <input hidden type="text" value="" name="image{{$index + 1}}" id="image{{ $index + 1 }}">
                             </div>
 
                         </div>
                     @else
                         <div class="flex flex-row justify-between">
-                            <img class="image_border w-1/2" src="{{ asset('storage/product_image/' . $foundProduct->id . '/' . $image) }}" alt="">
+                            <img class="image_border w-1/2" id="img{{$index + 1}}" src="{{ asset('storage/product_image/' . $foundProduct->id . '/' . $image) }}" alt="">
                             <div class="flex flex-col w-[49%]">
-                                <button class="button-action w-1/2 rounded font-bold">
-                                    <i class="fa-solid fa-image"></i>
-                                    <span class="uppercase">
-                                        Change image
-                                    </span>
-                                </button>
+                                <input type="file" style="display: none" accept="image/jpeg" id="input{{$index + 1}}" onchange="uploadImage({{$index + 1}}, this)" name="imageUpload[]">
+                                <label for="input{{$index + 1}}" class="custom-file-input custom-file-input-edit"></label>
+                                <input hidden type="text" value="" name="image{{$index + 1}}" id="image{{ $index + 1 }}">
                             </div>
                         </div>
                     @endif
@@ -166,4 +161,8 @@
             </a>
         </div>
     </form>
+@endsection
+
+@section('script')
+    <script src="{{ asset('assets/js/admin/product.js') }}"></script>
 @endsection

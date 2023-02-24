@@ -57,6 +57,15 @@ class OrderAdminService
         $statusOrder = (int) $request->status_order;
         $result = $this->orderRepository->updateStatusOrder($idOrder, $statusOrder);
         if ($result) {
+            $foundOrder = $this->orderRepository->getOrderByID($request->id_order);
+            $foundOrder->order_info = json_decode($foundOrder->order_info);
+
+
+            foreach ($foundOrder->order_info as $order_info) {
+                $this->productRepository->updateNumberProduct($order_info->quantity, $order_info->id_product);
+            }
+
+
             $response = new ResponseObject(Result::SUCCESS, '', 'Handle order successfully!');
             return response()->json($response->responseObject());
         }

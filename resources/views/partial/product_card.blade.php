@@ -14,11 +14,17 @@
         </div>
         <div class="flex flex-row items-center gap-[12px]">
             <div class="flex flex-row">
-                @foreach(range(1,5) as $j)
-                    <span class="fa-stack" style="width:0.7em">
-                        <i class="fas text-[10px] fa-star fa-stack-1x"></i>
-                    </span>
-                @endforeach
+                    @foreach(range(1,5) as $j)
+                        @if($j < $product->rating)
+                            <span class="fa-stack" style="width:0.7em">
+                                <i class="fas text-[10px] fa-star fa-stack-1x"></i>
+                            </span>
+                        @else
+                            <span class="fa-stack" style="width:0.7em">
+                                <i class="far text-[10px] fa-star fa-stack-1x"></i>
+                            </span>
+                        @endif
+                    @endforeach
             </div>
             <div class="flex flex-row text-[0.85rem] gap-[2px]">
                 <span>{{ $product->sold }}</span>
