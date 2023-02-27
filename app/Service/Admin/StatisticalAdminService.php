@@ -36,10 +36,12 @@ class StatisticalAdminService
 
         $arrayValue = [];
 
+        $j = 0;
         for ($i = 1; $i <= 31; $i++) {
-            $position = array_search($i, $day);
+            $position = in_array($i, $day);
             if ($position) {
-                array_push($arrayValue, (int) $price[$position]);
+                array_push($arrayValue, (int) $price[$j]);
+                $j++;
             } else {
                 array_push($arrayValue, 0);
             }

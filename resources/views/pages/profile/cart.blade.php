@@ -35,7 +35,7 @@
             @foreach($foundProduct as $product)
                 <div class="flex flex-row justify-between items-center product_cart" id="{{ $product->id }}">
                     <div class="flex flex-row items-center justify-center w-[5%]">
-                        @if($product->status_product == 1)
+                        @if($product->status_product == 1 && $product->number_of_product > 1)
                             <input type="checkbox" class="product_choice" name="product_choice" value="{{ $product->id }}" onclick="getItem(this.value, this)">
                         @endif
                     </div>
@@ -59,7 +59,7 @@
                         @endif
                     </div>
                     <div class="flex flex-row items-center w-[17%] justify-center">
-                        @if($product->status_product == 1)
+                        @if($product->status_product == 1 && $product->number_of_product > 1)
                             <button class="increase_btn disabled_button" onclick="decreaseQuantity(this)" disabled>
                                 <span>
                                     -

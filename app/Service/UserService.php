@@ -40,7 +40,11 @@ class UserService
     public function login(Request $request)
     {
         $user = $this->userRepository->getUser($request->email, $request->password);
+
         if ($user) {
+            if($user->status == 2) {
+                return redirect()->back();
+            }
             Auth::login($user);
             return redirect()->route('main');
         }

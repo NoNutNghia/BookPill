@@ -23,8 +23,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [ProductController::class, 'getProductList'])->name('main');
+Route::get('/', function () {
+    if((Auth::check() && Auth::user()->role == 2) || (!Auth::check())) {
+        return redirect()->route('product.main');
+    } else {
+        return redirect()->route('admin.product.list');
+    }
+})->name('main');
 
 Route::get('/register', function () {
     if (!Auth::check()) {
@@ -58,7 +63,7 @@ Route::middleware('user')->group(function () {
     });
 });
 
-Route::prefix('/product')->name('product.')->group(function () {
+Route::prefix('/product')->middleware('userAndGuest')->name('product.')->group(function () {
     Route::get('/', [ProductController::class, 'getProductList'])->name('main');
     Route::get('/detail', [ProductController::class, 'getProductDetail'])->name('detail');
     Route::post('/filter', [ProductController::class, 'getProductFilter'])->name('filter');
@@ -66,27 +71,29 @@ Route::prefix('/product')->name('product.')->group(function () {
     Route::post('/comment/get', [CommentController::class, 'getCommentProduct'])->name('get_comment');
 });
 
-Route::prefix('/admin')->name('admin.')->group(function () {
-    Route::prefix('/product')->name('product.')->group(function () {
-        Route::get('/add', [AdminProductController::class, 'getProductAdd'])->name('add');
-        Route::post('/add', [AdminProductController::class, 'addProduct'])->name('post_add');
-        Route::get('/list', [AdminProductController::class, 'getProductList'])->name('list');
-        Route::get('/detail', [AdminProductController::class, 'getProductDetail'])->name('detail');
-        Route::get('/edit', [AdminProductController::class, 'getProductEdit'])->name('edit');
-        Route::post('/edit', [AdminProductController::class, 'editProduct'])->name('post_edit');
-    });
-    Route::prefix('/user')->name('user.')->group(function () {
-        Route::get('/list', [AdminUserController::class, 'getUserList'])->name('list');
-        Route::get('/detail', [AdminUserController::class, 'getUserDetail'])->name('detail');
-        Route::post('/change', [AdminUserController::class, 'changeUserStatus'])->name('change_status');
-    });
-    Route::prefix('/statistical')->name('statistical.')->group(function () {
-        Route::get('/main', [StatisticalController::class, 'getStatisticalProduct'])->name('main');
-        Route::post('calculate', [StatisticalController::class, 'calculateStatisticalProduct'])->name('calculate');
-    });
-    Route::prefix('/order')->name('order.')->group(function () {
-        Route::get('/list', [AdminOrderController::class, 'getOrderList'])->name('list');
-        Route::get('/detail', [AdminOrderController::class, 'getOrderDetail'])->name('detail');
-        Route::post('/handle', [AdminOrderController::class, 'handleOrder'])->name('handle');
+Route::middleware('admin')->group(function () {
+    Route::prefix('/admin')->name('admin.')->group(function () {
+        Route::prefix('/product')->name('product.')->group(function () {
+            Route::get('/add', [AdminProductController::class, 'getProductAdd'])->name('add');
+            Route::post('/add', [AdminProductController::class, 'addProduct'])->name('post_add');
+            Route::get('/list', [AdminProductController::class, 'getProductList'])->name('list');
+            Route::get('/detail', [AdminProductController::class, 'getProductDetail'])->name('detail');
+            Route::get('/edit', [AdminProductController::class, 'getProductEdit'])->name('edit');
+            Route::post('/edit', [AdminProductController::class, 'editProduct'])->name('post_edit');
+        });
+        Route::prefix('/user')->name('user.')->group(function () {
+            Route::get('/list', [AdminUserController::class, 'getUserList'])->name('list');
+            Route::get('/detail', [AdminUserController::class, 'getUserDetail'])->name('detail');
+            Route::post('/change', [AdminUserController::class, 'changeUserStatus'])->name('change_status');
+        });
+        Route::prefix('/statistical')->name('statistical.')->group(function () {
+            Route::get('/main', [StatisticalController::class, 'getStatisticalProduct'])->name('main');
+            Route::post('calculate', [StatisticalController::class, 'calculateStatisticalProduct'])->name('calculate');
+        });
+        Route::prefix('/order')->name('order.')->group(function () {
+            Route::get('/list', [AdminOrderController::class, 'getOrderList'])->name('list');
+            Route::get('/detail', [AdminOrderController::class, 'getOrderDetail'])->name('detail');
+            Route::post('/handle', [AdminOrderController::class, 'handleOrder'])->name('handle');
+        });
     });
 });

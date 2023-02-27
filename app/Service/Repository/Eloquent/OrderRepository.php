@@ -118,7 +118,7 @@ class OrderRepository implements OrderRepositoryInterface
             DB::statement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
             return DB::select('
                 SELECT SUM(price_order) as price, DAY(updated_at) as statistical_day FROM `order`
-                WHERE MONTH(updated_at) = ' . $month .  ' AND YEAR(updated_at) = ' . $year . '
+                WHERE status_order = 2 AND MONTH(updated_at) = ' . $month .  ' AND YEAR(updated_at) = ' . $year . '
                 GROUP BY cast(updated_at as date)');
         } catch (\Exception $e) {
             return false;
