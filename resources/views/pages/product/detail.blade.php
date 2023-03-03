@@ -102,7 +102,7 @@
                     <span class="text_product_information w-[18%]">
                         Author
                     </span>
-                        <a href="" class="text_product_information text-[#566FEF]">
+                        <a href="{{ route('product.author', ['author' => $product->authorProduct->id]) }}" class="text_product_information text-[#566FEF]">
                             {{ $product->authorProduct->author_name}}
                         </a>
                     </div>
@@ -112,7 +112,7 @@
                     </span>
                         <div class="flex flex-row gap-[16px] items-center">
                             @foreach($genreList as $genre)
-                                <a href="" class="text_product_information text-[#566FEF]">
+                                <a href="{{ route('product.genre', ['genre' => $genre->id]) }}" class="text_product_information text-[#566FEF]">
                                     {{ $genre->genre_name }}
                                 </a>
                             @endforeach

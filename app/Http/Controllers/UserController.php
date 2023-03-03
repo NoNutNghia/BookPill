@@ -52,4 +52,19 @@ class UserController extends Controller
     {
         return $this->userService->resetPasswordIndex($request);
     }
+
+    public function changeUser(Request $request)
+    {
+        return $this->userService->changeUser($request);
+    }
+
+    public function register(Request $request)
+    {
+        return $this->userService->register($request);
+    }
+
+    public function registerUser(Request $request)
+    {
+        return $this->userService->registerUser($request);
+    }
 }

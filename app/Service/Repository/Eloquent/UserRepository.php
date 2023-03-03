@@ -4,6 +4,8 @@ namespace App\Service\Repository\Eloquent;
 
 use App\Models\User;
 use App\Service\Repository\UserRepositoryInterface;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
@@ -89,6 +91,44 @@ class UserRepository implements UserRepositoryInterface
                 'email' => $email,
                 'register_url' => $registerUrl
             ));
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function updateUser($user, $request)
+    {
+        try {
+            $user->update(array(
+                'date_of_birth' => $request->date_of_birth,
+                'gender' => $request->gender,
+                'full_name' => $request->full_name
+            ));
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function createUser($request)
+    {
+        try {
+            $this->user->insert(array(
+                array(
+                    'full_name' => $request->full_name,
+                    'username' => $request->username,
+                    'phone_number' => $request->phone_number,
+                    'email' => $request->email,
+                    'date_of_birth' => $request->date_of_birth,
+                    'password' => sha1($request->password),
+                    'gender' => $request->gender,
+                    'status' => 1,
+                    'role' => 2,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                )
+            ));
+            return true;
         } catch (\Exception $e) {
             return false;
         }

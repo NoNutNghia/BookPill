@@ -39,6 +39,9 @@ Route::get('/register', function () {
     return redirect()->route('main');
 })->name('register');
 
+Route::post('/register_page', [UserController::class, 'register'])->name('register_user');
+Route::post('/register', [UserController::class, 'registerUser'])->name('register_user_req');
+
 Route::get('/sign-in', [UserController::class, 'index'])->name('sign_in');
 Route::post('/sign-in', [UserController::class, 'login'])->name('request_sign_in');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
@@ -52,6 +55,7 @@ Route::middleware('user')->group(function () {
         Route::get('/profile', function () {
             return view('pages.profile.profile');
         })->name('profile');
+        Route::post('change', [UserController::class, 'changeUser'])->name('change');
         Route::get('/cart', [CartController::class, 'getCartList'])->name('cart');
         Route::post('/cart', [CartController::class, 'addProductToCart'])->name('add_cart');
         Route::post('/cart/remove', [CartController::class, 'removeProductFromCart'])->name('remove_product');
@@ -63,12 +67,21 @@ Route::middleware('user')->group(function () {
     });
 });
 
-Route::prefix('/product')->middleware('userAndGuest')->name('product.')->group(function () {
-    Route::get('/', [ProductController::class, 'getProductList'])->name('main');
-    Route::get('/detail', [ProductController::class, 'getProductDetail'])->name('detail');
-    Route::post('/filter', [ProductController::class, 'getProductFilter'])->name('filter');
-    Route::post('/title', [ProductController::class, 'getProductTitle'])->name('title');
-    Route::post('/comment/get', [CommentController::class, 'getCommentProduct'])->name('get_comment');
+Route::middleware('userAndGuest')->group(function () {
+    Route::prefix('/product')->name('product.')->group(function () {
+        Route::get('/', [ProductController::class, 'getProductList'])->name('main');
+        Route::get('/search', [ProductController::class, 'getProductBySearchKey'])->name('search');
+        Route::get('/detail', [ProductController::class, 'getProductDetail'])->name('detail');
+        Route::post('/filter', [ProductController::class, 'getProductFilter'])->name('filter');
+        Route::post('/title', [ProductController::class, 'getProductTitle'])->name('title');
+        Route::post('/comment/get', [CommentController::class, 'getCommentProduct'])->name('get_comment');
+        Route::get('/genre', [ProductController::class, 'getProductByGenre'])->name('genre');
+        Route::get('/author', [ProductController::class, 'getProductByAuthor'])->name('author');
+    });
+
+    Route::get('/error', function () {
+        return view('pages.error.error');
+    })->name('error');
 });
 
 Route::middleware('admin')->group(function () {

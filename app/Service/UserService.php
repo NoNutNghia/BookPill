@@ -2,7 +2,9 @@
 
 namespace App\Service;
 
+use App\Enum\Result;
 use App\Mail\RegisterOrder;
+use App\ResponseObject\ResponseObject;
 use App\Service\Repository\UserRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -115,4 +117,39 @@ class UserService
 
         return $randomNumString;
     }
+
+    public function changeUser(Request $request)
+    {
+        $result = $this->userRepository->updateUser(Auth::user(), $request);
+        if ($result) {
+            $response = new ResponseObject(Result::SUCCESS, '', 'Update user successfully!');
+            return response()->json($response->responseObject());
+        }
+
+        $response = new ResponseObject(Result::FAILURE, '', 'Cannot update user!');
+        return response()->json($response->responseObject());
+    }
+
+    public function register(Request $request)
+    {
+        $email = $request->email;
+        $existUser = $this->userRepository->getUserByEmail($email);
+
+        if($existUser) {
+            return redirect()->back();
+        }
+
+        return view('pages.auth.register_page', compact('email'));
+    }
+
+    public function registerUser(Request $request)
+    {
+        $result = $this->userRepository->createUser($request);
+        if ($result) {
+            return redirect()->route('sign_in');
+        }
+
+        return redirect()->back();
+    }
+
 }

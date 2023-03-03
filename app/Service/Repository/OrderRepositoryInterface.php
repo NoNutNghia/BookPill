@@ -20,4 +20,6 @@ interface OrderRepositoryInterface
     public function updateOrder($idOrder, $orderInfo);
 
     public function statisticalProduct($month, $year);
+
+    public function statisticalOrderInfo($month, $year);
 }

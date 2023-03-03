@@ -29,7 +29,7 @@
                             Name
                         </span>
                     </div>
-                    <input type="text" class="w-[75%] mb-[0] input_auth_username"
+                    <input type="text" class="w-[75%] mb-[0] input_auth_username" id="full_name"
                            value="{{ \Illuminate\Support\Facades\Auth::user()->full_name }}">
                 </div>
                 <div class="flex flex-row items-center gap-[16px]">
@@ -80,14 +80,14 @@
                         </span>
                     </div>
                     <div class="flex w-[65%] flex-row items-center gap-[1rem]">
-                        <input type="date" class="input_auth_username m-0" value="{{ \Carbon\Carbon::now()}}">
+                        <input type="date" class="input_auth_username m-0" id="dateOfBirth" value="{{ \Illuminate\Support\Facades\Auth::user()->date_of_birth }}">
                     </div>
                 </div>
                 <div class="flex flex-row items-center gap-[16px]">
                     <div class="w-[20%] flex flex-row-reverse">
                     </div>
                     <div class="flex w-[65%] flex-row items-center gap-[1rem]">
-                        <button class="pt-[10px] pb-[10px] pr-[24px] pl-[24px] button-action">
+                        <button class="pt-[10px] pb-[10px] pr-[24px] pl-[24px] button-action" onclick="changeUser()">
                             <span>
                                 Save
                             </span>
@@ -108,11 +108,21 @@
                         File size: maximum 1 MB
                     </span>
                     <span>
-                        File extension: .JPEG, .PNG
+                        File extension: .JPEG
                     </span>
                 </div>
             </div>
 
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function routeChangeUser() {
+            return '{{ route('account.change') }}'
+        }
+    </script>
+
+    <script src="{{ asset('assets/js/user.js') }}"></script>
 @endsection

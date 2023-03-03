@@ -3,8 +3,10 @@
 namespace App\Service;
 
 use App\Service\Repository\GenreRepositoryInterface;
+use App\Service\Repository\OrderRepositoryInterface;
 use App\Service\Repository\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProductService
@@ -12,34 +14,133 @@ class ProductService
     private ProductRepositoryInterface $productRepository;
     private GenreRepositoryInterface $genreRepository;
 
+    private OrderRepositoryInterface $orderRepository;
+
     /**
      * @param ProductRepositoryInterface $productRepository
      * @param GenreRepositoryInterface $genreRepository
+     * @param OrderRepositoryInterface $orderRepository
      */
     public function __construct(
         ProductRepositoryInterface $productRepository,
-        GenreRepositoryInterface $genreRepository
+        GenreRepositoryInterface $genreRepository,
+        OrderRepositoryInterface $orderRepository
     )
     {
         $this->productRepository = $productRepository;
         $this->genreRepository = $genreRepository;
+        $this->orderRepository = $orderRepository;
     }
 
     public function getProductList(Request $request)
     {
         $productList = $this->productRepository->getProductList();
 
+        $topSeller = $this->productRepository->getTopSellerProduct(5);
+
         $genreList = $this->genreRepository->getGenre();
+
+        $idList = collect();
+
+        if(Auth::check()) {
+
+            $orderInfo = Auth::user()->order;
+
+            foreach ($orderInfo as $order) {
+                $orderData = json_decode($order->order_info);
+
+                foreach ($orderData as $data) {
+                    $idList->push($data->id_product);
+                }
+
+            }
+
+            $genreRecommend = [];
+
+            $idList = $idList->unique();
+
+            $productRecommend = $this->productRepository->getProductByIDList($idList);
+
+            foreach ($productRecommend as $product) {
+                $genreRecommend = array_merge($genreRecommend, json_decode($product->genre));
+            }
+
+            $genreTmp = array_count_values($genreRecommend);
+
+            sort($genreTmp);
+
+            $genres = array_slice($genreTmp, -3, 3, true);
+
+            $genreTmp = [];
+
+            foreach ($genres as $key=>$genre) {
+                array_push($genreTmp, $key);
+            }
+
+            $query = '';
+
+            $index = 0;
+
+            foreach ($genreTmp as $genre) {
+                if ($index > 0 && $index < (count($genreTmp))) {
+                    $query .= ' OR ';
+                    $query .= ' genre LIKE "%' . $genre . '%" ';
+                } else {
+                    $query .= ' genre LIKE "%' . $genre . '%" ';
+                }
+                $index++;
+            }
+
+            if(!$query) {
+                return view('pages.product.main')->with(array(
+                    'productList' => $productList,
+                    'genreList' => $genreList,
+                    'topSeller' => $topSeller
+                ));
+            }
+
+            $recommendProductList = $this->productRepository->getRecommendProduct($query);
+
+            return view('pages.product.main')->with(array(
+                'productList' => $productList,
+                'genreList' => $genreList,
+                'topSeller' => $topSeller,
+                'recommendProductList' => $recommendProductList
+            ));
+        }
 
         return view('pages.product.main')->with(array(
             'productList' => $productList,
-            'genreList' => $genreList
+            'genreList' => $genreList,
+            'topSeller' => $topSeller
         ));
+    }
+
+    public function getProductBySearchKey(Request $request)
+    {
+        $key = '%' . trim($request->key) . '%';
+        $productList = $this->productRepository->getProductList($key);
+        if($key == '%%') {
+            $genreList = $this->genreRepository->getGenre();
+
+            return view('pages.product.main')->with(array(
+                'productList' => $productList,
+                'genreList' => $genreList
+            ));
+        }
+
+        $search = trim($request->key);
+
+        return view('pages.product.main', compact('productList', 'search'));
     }
 
     public function getProductDetail(Request $request)
     {
         $foundProduct = $this->productRepository->getProductDetail($request->id);
+
+        if (!$foundProduct) {
+            return redirect()->route('error');
+        }
 
         $imageList = $this->getImageFile($request->id);
 
@@ -164,6 +265,19 @@ class ProductService
         }
 
         return $dataResponse;
+    }
+
+    public function getProductByGenre(Request $request)
+    {
+        $genre = '%' . $request->genre . '%';
+        $productList = $this->productRepository->getProductByGenre($genre);
+        return view('pages.product.main', compact('productList'));
+    }
+
+    public function getProductByAuthor(Request $request)
+    {
+        $productList =  $this->productRepository->getProductByAuthor($request->author);
+        return view('pages.product.main', compact('productList'));
     }
 
 }

@@ -73,8 +73,8 @@
             <img class="image_header" src="{{ asset('storage/source_image/main_logo.png') }}" alt="">
         </a>
         <div class="flex flex-row w-4/5">
-            <div class="w-4/5 flex flex-row-reverse items-center" id="search_area">
-                <input type="text" class="search_header" id="search_product">
+            <form action="{{ route('product.search') }}" class="w-4/5 flex flex-row-reverse items-center" id="search_area">
+                <input type="text" class="search_header" name="key" id="search_product">
                 <button id="button_search" class="button-action">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
 
-            </div>
+            </form>
             <div class="w-1/5 flex flex-col justify-end items-center">
                 @if(\Illuminate\Support\Facades\Auth::check())
                     <a href="{{ route('account.cart') }}">

@@ -15,7 +15,7 @@
         <div class="flex flex-row items-center gap-[12px]">
             <div class="flex flex-row">
                     @foreach(range(1,5) as $j)
-                        @if($j < $product->rating)
+                        @if($j <= $product->rating)
                             <span class="fa-stack" style="width:0.7em">
                                 <i class="fas text-[10px] fa-star fa-stack-1x"></i>
                             </span>

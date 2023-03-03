@@ -29,4 +29,14 @@ interface ProductRepositoryInterface
     public function updateRatingProduct($id, $rating);
 
     public function updateProduct($id, $title, $genre, $ageRange, $numberOfProduct, $discount, $status, $delivery, $author, $price);
+
+    public function getProductByGenre($genre);
+
+    public function getProductByAuthor($author);
+
+    public function countProductWarehouse();
+
+    public function getTopSellerProduct($number);
+
+    public function getRecommendProduct($query);
 }

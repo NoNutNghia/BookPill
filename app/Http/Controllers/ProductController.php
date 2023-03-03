@@ -36,4 +36,19 @@ class ProductController extends Controller
     {
         return $this->productService->getProductTitle($request);
     }
+
+    public function getProductBySearchKey(Request $request)
+    {
+        return $this->productService->getProductBySearchKey($request);
+    }
+
+    public function getProductByGenre(Request $request)
+    {
+        return $this->productService->getProductByGenre($request);
+    }
+
+    public function getProductByAuthor(Request $request)
+    {
+        return $this->productService->getProductByAuthor($request);
+    }
 }

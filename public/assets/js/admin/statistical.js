@@ -27,7 +27,11 @@ $(function () {
                     if (chart) {
                         chart.destroy()
                     }
-                    drawChart(response.data);
+                    drawChart(response.data.arrayValue)
+                    $('#countWareHouse').html(response.data.countProductWarehouse)
+                    $('#soldCount').html(response.data.countData)
+                    $('#month').html(statisticalChoice.val())
+                    $('#topSeller').html(response.data.dataTopSeller)
                 } else {
                     Swal.fire(`${response.message}`, '', 'error')
                 }

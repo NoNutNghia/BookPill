@@ -124,4 +124,16 @@ class OrderRepository implements OrderRepositoryInterface
             return false;
         }
     }
+
+    public function statisticalOrderInfo($month, $year)
+    {
+        try {
+            DB::statement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+            return DB::select('
+                SELECT order_info FROM `order`
+                WHERE status_order = 2 AND MONTH(updated_at) = ' . $month .  ' AND YEAR(updated_at) = ' . $year);
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

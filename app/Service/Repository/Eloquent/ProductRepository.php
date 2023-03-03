@@ -20,10 +20,13 @@ class ProductRepository implements ProductRepositoryInterface
         $this->product = new Product();
     }
 
-    public function getProductList($searchKey = '')
+    public function getProductList($searchKey = '%%')
     {
         try {
-            return $this->product->where('status_product', 1)->orderBy('title')->get();
+            return $this->product->where(function ($query) use ($searchKey) {
+                $query->where('status_product', 1)
+                    ->where('title', 'LIKE', $searchKey);
+            })->orderBy('title')->get();
         } catch (\Exception $e) {
             return false;
         }
@@ -179,6 +182,53 @@ class ProductRepository implements ProductRepositoryInterface
                 'rating' => $rating
             ));
             return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getProductByGenre($genre)
+    {
+        try {
+            return $this->product->where('genre', 'LIKE', $genre)->orderBy('title')->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getProductByAuthor($author)
+    {
+        try {
+            return $this->product->where('author', $author)->orderBy('title')->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function countProductWarehouse()
+    {
+        try {
+            DB::statement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+            return DB::select('
+                SELECT SUM(number_of_product) - SUM(sold) as countProduct FROM `product`');
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getTopSellerProduct($number)
+    {
+        try {
+            return $this->product->orderBy('sold', 'DESC')->take($number)->get();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function getRecommendProduct($query)
+    {
+        try {
+            return $this->product->whereRaw($query)->orderBy('sold', 'DESC')->take(5)->get();
         } catch (\Exception $e) {
             return false;
         }
